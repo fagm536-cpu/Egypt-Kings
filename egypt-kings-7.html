@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>مُلُوكُ مِصْرَ الْعِظَام</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--gold:#c9a84c;--gold-light:#f0d080;--gold-dark:#8a6a1f;--sand:#f5e6c8;--dark:#0d0a05;--dark2:#1a1408;--dark3:#241c0a;--red:#8b1a1a;--lapis:#1a3a6b;--turq:#3a8a7a}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--dark);color:var(--sand);font-family:'Noto Naskh Arabic',serif;overflow-x:hidden;cursor:none}
+    .cursor{position:fixed;width:20px;height:20px;border:2px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .2s,height .2s}
+    .cursor-dot{position:fixed;width:5px;height:5px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:.4}
+
+    /* ── PAGES ── */
+    #page-home{display:block}
+    #page-king{display:none}
+
+    /* ── HERO ── */
+    #hero{
+      position:relative;height:100vh;min-height:600px;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      overflow:hidden;text-align:center;
+      padding:0 1rem;
+      gap:0;
+    }
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,168,76,.12) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 50% 100%,rgba(138,106,31,.1) 0%,transparent 60%),linear-gradient(180deg,#0d0a05 0%,#1a1408 40%,#0d0a05 100%)}
+    .pyr-wrap{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;display:flex;justify-content:center;gap:20px;align-items:flex-end;opacity:.07}
+    .pyr{width:0;height:0;border-left:solid transparent;border-right:solid transparent;border-bottom:solid var(--gold)}
+    .pyr-lg{border-left-width:220px;border-right-width:220px;border-bottom-width:380px}
+    .pyr-md{border-left-width:160px;border-right-width:160px;border-bottom-width:280px}
+    .pyr-sm{border-left-width:110px;border-right-width:110px;border-bottom-width:200px}
+    .hband{position:absolute;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--red),var(--gold),var(--lapis),var(--gold),var(--turq),var(--gold),var(--red))}
+    .hband-top{top:0}.hband-bot{bottom:0}
+    .hero-eye{font-size:4rem;opacity:.22;color:var(--gold);letter-spacing:1rem;animation:float 6s ease-in-out infinite;margin-bottom:1rem}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+    .hero-eye{
+      font-size:2.5rem;opacity:.2;color:var(--gold);
+      letter-spacing:.8rem;margin-bottom:1.5rem;
+      animation:fu 1s .1s both;
+    }
+    .hero-sub{font-family:'Amiri',serif;
+      font-family:'Cairo',sans-serif;
+      font-size:.75rem;letter-spacing:.4rem;
+      color:var(--gold);opacity:.85;
+      animation:fu 1s .2s both;
+      margin-bottom:.5rem;
+    }
+    .hero-title{
+      font-family:'Amiri',serif;
+      font-size:clamp(3rem,12vw,7rem);
+      font-weight:700;line-height:1.1;
+      color:transparent;
+      background:linear-gradient(180deg,var(--gold-light) 0%,var(--gold) 60%,var(--gold-dark) 100%);
+      -webkit-background-clip:text;background-clip:text;
+      margin:.2em 0 .5em;
+      animation:fu 1s .4s both;
+      position:relative;
+    }
+    .hero-title::after{
+      content:'';position:absolute;bottom:-8px;left:50%;
+      transform:translateX(-50%);
+      width:180px;height:1px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    }
+    .hero-desc-wrap{
+      display:flex;flex-direction:column;align-items:center;gap:.8rem;
+      margin-top:1.8rem;animation:fu 1s .6s both;
+      background:rgba(13,10,5,.7);
+      border:1px solid rgba(201,168,76,.2);
+      padding:1.2rem 2rem;
+      width:90%;max-width:560px;
+      backdrop-filter:blur(6px);
+    }
+    .hero-desc{
+      font-family:'Amiri',serif;
+      font-size:clamp(1rem,3.5vw,1.3rem);
+      line-height:1.8;
+      color:var(--gold-light);
+      text-align:center;margin:0;padding:0;
+      font-weight:700;
+    }
+    .hero-desc-sub{
+      font-family:'Noto Naskh Arabic',serif;
+      font-size:clamp(.85rem,2.5vw,1rem);
+      line-height:2.2;
+      color:rgba(245,230,200,.8);
+      text-align:center;
+      word-break:keep-all;
+    }
+    .hero-scroll{
+      position:absolute;bottom:2rem;
+      display:flex;flex-direction:column;align-items:center;gap:.5rem;
+      animation:fu 1s 1.2s both;
+    }
+    .hero-scroll span{
+      font-family:'Cairo',sans-serif;
+      font-size:.75rem;letter-spacing:.3rem;
+      color:var(--gold);opacity:.8;
+    }
+    .scroll-line{width:1px;height:40px;background:linear-gradient(180deg,var(--gold),transparent);animation:sp 2s ease-in-out infinite}
+    @keyframes sp{0%,100%{opacity:.3}50%{opacity:1}}
+    @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ── FACTS ── */
+    #facts{padding:5rem 5%;background:rgba(201,168,76,.03);border-top:1px solid rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.08)}
+    .facts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;text-align:center}
+    .fact-item{display:flex;flex-direction:column;align-items:center;gap:.8rem}
+    .fact-icon{font-size:2rem;opacity:.5}
+    .fact-num{font-family:'Amiri',serif;font-size:3rem;color:var(--gold);line-height:1;font-weight:700}
+    .fact-lbl{font-size:.95rem;color:rgba(245,230,200,.5)}
+
+    /* ── SECTION TITLE ── */
+    .sec-title{text-align:center;margin-bottom:4rem;padding:0 2rem}
+    .sec-title .lbl{font-size:.75rem;letter-spacing:.5rem;color:var(--gold);opacity:.6;display:block;margin-bottom:.8rem}
+    .sec-title h2{font-family:'Amiri',serif;font-size:clamp(2rem,5vw,3.5rem);color:transparent;background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;background-clip:text;font-weight:700}
+
+    /* ── ERA NAV ── */
+    .eras-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;padding:0 5%;margin-bottom:4rem}
+    .era-btn{background:transparent;border:1px solid rgba(201,168,76,.25);color:rgba(245,230,200,.6);padding:.5rem 1.5rem;font-family:'Amiri',serif;font-size:1.05rem;cursor:pointer;transition:all .3s}
+    .era-btn:hover,.era-btn.active{background:rgba(201,168,76,.1);border-color:var(--gold);color:var(--gold)}
+
+    /* ── KINGS GRID ── */
+    #kings{padding:6rem 5%}
+    .kings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
+    .king-card{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(26,20,8,.9),rgba(36,28,10,.95));border:1px solid rgba(201,168,76,.15);transition:transform .4s,box-shadow .4s,border-color .4s;cursor:pointer}
+    .king-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold),var(--lapis));transform:scaleX(0);transition:transform .4s;transform-origin:right;z-index:3}
+    .king-card:hover::before{transform:scaleX(1);transform-origin:left}
+    .king-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 30px rgba(201,168,76,.08);border-color:rgba(201,168,76,.35)}
+    .king-card.hidden{display:none}
+
+    /* SVG art area */
+    .card-art{width:100%;height:220px;overflow:hidden;position:relative;background:var(--dark3)}
+    .card-art svg{width:100%;height:100%}
+    .card-art-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(13,10,5,.95) 100%)}
+
+    .card-badge{position:absolute;top:1rem;left:1rem;font-size:.65rem;letter-spacing:.2rem;padding:.25rem .7rem;border:1px solid;font-weight:600;z-index:2}
+    .badge-old{border-color:var(--gold-dark);color:var(--gold-dark);background:rgba(13,10,5,.75)}
+    .badge-middle{border-color:var(--turq);color:var(--turq);background:rgba(13,10,5,.75)}
+    .badge-new{border-color:var(--lapis);color:#6090d0;background:rgba(13,10,5,.75)}
+    .badge-late{border-color:var(--red);color:#d05050;background:rgba(13,10,5,.75)}
+    .badge-ptol{border-color:#8060c0;color:#c090ff;background:rgba(13,10,5,.75)}
+    .card-hiero{position:absolute;top:1rem;right:1rem;font-size:1.5rem;opacity:.15;z-index:2}
+    .card-num{position:absolute;bottom:1.5rem;right:1.5rem;font-family:'Amiri',serif;font-size:4rem;color:var(--gold);opacity:.05;font-weight:700;line-height:1}
+    .card-body{padding:1.5rem 1.8rem 2rem}
+    .king-name{font-family:'Noto Naskh Arabic',serif;font-size:1.6rem;color:var(--gold-light);font-weight:700;line-height:1.4;margin-bottom:.3rem}
+    .king-latin{font-family:'Cairo',sans-serif;font-size:.75rem;letter-spacing:.12rem;color:rgba(245,230,200,.35);margin-bottom:.8rem}
+    .king-reign{display:flex;align-items:center;gap:.5rem;font-size:.95rem;color:var(--gold);opacity:.75;margin-bottom:1rem;border-bottom:1px solid rgba(201,168,76,.15);padding-bottom:1rem}
+    .king-desc{font-size:1.05rem;line-height:2.6;color:rgba(245,230,200,.65)}
+    .king-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
+    .ktag{font-size:.82rem;padding:.25rem .65rem;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);color:var(--gold)}
+
+    /* ── DIVIDER ── */
+    .divider{display:flex;align-items:center;gap:1.5rem;padding:0 10%;margin:4rem 0 2rem}
+    .div-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dark),transparent)}
+    .div-sym{color:var(--gold);font-size:1.8rem;opacity:.6}
+
+    /* ── TIMELINE ── */
+    #timeline{padding:6rem 5%;background:linear-gradient(180deg,transparent,rgba(201,168,76,.03),transparent);position:relative}
+    .tl-line{position:absolute;top:0;bottom:0;right:50%;width:1px;background:linear-gradient(180deg,transparent,var(--gold-dark),transparent);opacity:.2}
+    .tl-items{display:flex;flex-direction:column;gap:3rem;max-width:900px;margin:0 auto}
+    .tl-item{display:grid;grid-template-columns:1fr 60px 1fr;gap:1.5rem;align-items:center}
+    .tl-item:nth-child(even) .tl-content{order:3;text-align:right}
+    .tl-item:nth-child(even) .tl-empty{order:1}
+    .tl-item:nth-child(even) .tl-dot-wrap{order:2}
+    .tl-content{background:rgba(26,20,8,.7);border:1px solid rgba(201,168,76,.12);padding:1.5rem;transition:border-color .3s}
+    .tl-content:hover{border-color:rgba(201,168,76,.3)}
+    .tl-year{font-family:'Amiri',serif;font-size:.9rem;letter-spacing:.2rem;color:var(--gold);opacity:.7;margin-bottom:.4rem}
+    .tl-name{font-family:'Amiri',serif;font-size:1.4rem;color:var(--gold-light);margin-bottom:.5rem}
+    .tl-text{font-family:'Noto Naskh Arabic',serif;font-size:1rem;color:rgba(245,230,200,.6);line-height:2.3}
+    .tl-dot-wrap{display:flex;align-items:center;justify-content:center}
+    .tl-dot-out{width:14px;height:14px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;opacity:.5}
+    .tl-dot-in{width:5px;height:5px;background:var(--gold)}
+
+    /* ── FOOTER ── */
+    footer{padding:3rem 5%;text-align:center;border-top:1px solid rgba(201,168,76,.08)}
+    .f-eye{font-size:2rem;opacity:.2;color:var(--gold);margin-bottom:1rem}
+    footer p{font-size:.95rem;letter-spacing:.1rem;color:rgba(245,230,200,.3)}
+
+    /* ── REVEAL ── */
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s,transform .7s}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* ════════════════════════
+       KING DETAIL PAGE
+    ════════════════════════ */
+    #page-king{animation:fu .45s both}
+
+    .back-btn{position:fixed;top:1.5rem;left:1.5rem;z-index:500;background:rgba(13,10,5,.9);border:1px solid rgba(201,168,76,.35);color:var(--gold);padding:.6rem 1.3rem;font-family:'Noto Naskh Arabic',serif;font-size:1rem;cursor:pointer;display:flex;align-items:center;gap:.6rem;transition:all .3s;backdrop-filter:blur(8px)}
+    .back-btn:hover{background:rgba(201,168,76,.12);border-color:var(--gold)}
+
+    /* King hero banner */
+    .kp-hero{position:relative;height:72vh;min-height:520px;display:flex;align-items:flex-end;overflow:hidden}
+    .kp-art{position:absolute;inset:0}
+    .kp-art svg{width:100%;height:100%}
+    .kp-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,10,5,1) 0%,rgba(13,10,5,.5) 45%,rgba(13,10,5,.1) 100%)}
+    .kp-hband{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--red),var(--gold),var(--lapis),var(--gold),var(--turq),var(--gold),var(--red))}
+    .kp-hero-content{position:relative;z-index:2;padding:0 8% 4.5rem;width:100%}
+    .kp-badge{display:inline-block;font-size:.72rem;letter-spacing:.25rem;padding:.3rem .9rem;border:1px solid;margin-bottom:1rem}
+    .kp-name{font-family:'Amiri',serif;font-size:clamp(3rem,8vw,6.5rem);color:transparent;background:linear-gradient(180deg,var(--gold-light),var(--gold));-webkit-background-clip:text;background-clip:text;font-weight:700;line-height:1.15}
+    .kp-latin{font-family:'Cairo',sans-serif;font-size:.85rem;letter-spacing:.3rem;color:rgba(245,230,200,.35);margin-top:.5rem}
+
+    /* body */
+    .kp-body{padding:5rem 8%;max-width:1200px;margin:0 auto}
+    .kp-grid{display:grid;grid-template-columns:1fr 340px;gap:5rem;align-items:start}
+    .kp-sec{margin-bottom:3.5rem}
+    .kp-sec-lbl{font-family:'Amiri',serif;font-size:.75rem;letter-spacing:.3rem;color:var(--gold);opacity:.55;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+    .kp-sec-lbl::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.12)}
+    .kp-sec-txt{font-size:1.15rem;line-height:2.7;color:rgba(245,230,200,.82)}
+    .kp-tags{display:flex;flex-wrap:wrap;gap:.6rem}
+    .kp-tag{font-size:.88rem;padding:.35rem 1rem;border:1px solid rgba(201,168,76,.25);color:var(--gold);background:rgba(201,168,76,.05)}
+
+    /* sidebar */
+    .kp-infobox{background:linear-gradient(135deg,rgba(26,20,8,.95),rgba(36,28,10,1));border:1px solid rgba(201,168,76,.18);padding:2rem;margin-bottom:2rem;position:sticky;top:2rem}
+    .kp-infobox-title{font-size:.68rem;letter-spacing:.4rem;color:var(--gold);opacity:.5;margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:1px solid rgba(201,168,76,.1)}
+    .kp-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.1rem;gap:1rem}
+    .kp-key{font-size:.88rem;color:rgba(245,230,200,.4);flex-shrink:0}
+    .kp-val{font-size:.95rem;color:var(--gold-light);text-align:left}
+
+    /* art gallery in sidebar */
+    .kp-gallery{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .kp-gallery-item{aspect-ratio:1;overflow:hidden;border:1px solid rgba(201,168,76,.1);background:var(--dark3);cursor:pointer;transition:border-color .3s;position:relative}
+    .kp-gallery-item:hover{border-color:rgba(201,168,76,.4)}
+    .kp-gallery-item svg{width:100%;height:100%;transition:transform .4s}
+    .kp-gallery-item:hover svg{transform:scale(1.06)}
+
+    /* nav */
+    .kp-nav{display:flex;justify-content:space-between;align-items:center;padding:3rem 8%;border-top:1px solid rgba(201,168,76,.08);gap:2rem}
+    .kp-nav-btn{background:transparent;border:1px solid rgba(201,168,76,.2);color:rgba(245,230,200,.6);padding:.8rem 1.6rem;font-family:'Noto Naskh Arabic',serif;font-size:1rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:.6rem}
+    .kp-nav-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.05)}
+    .kp-nav-btn:disabled{opacity:.2;cursor:default;pointer-events:none}
+
+    /* lightbox */
+    .lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(8px)}
+    .lightbox.active{opacity:1;pointer-events:all}
+    .lightbox svg{max-width:90vw;max-height:85vh;border:1px solid rgba(201,168,76,.2)}
+    .lb-close{position:absolute;top:1.5rem;left:1.5rem;background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--gold);width:36px;height:36px;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+    @media(max-width:900px){
+      .kp-grid{grid-template-columns:1fr;gap:3rem}
+      .kp-infobox{position:static}
+      .kp-body{padding:3rem 5%}
+      .kp-hero-content{padding:0 5% 3rem}
+      .tl-item{grid-template-columns:1fr}
+      .tl-empty,.tl-dot-wrap{display:none}
+    }
+  </style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLB()">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <div id="lb-content"></div>
+</div>
+
+<!-- ══════ HOME ══════ -->
+<div id="page-home">
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="pyr-wrap"><div class="pyr pyr-sm"></div><div class="pyr pyr-lg"></div><div class="pyr pyr-md"></div></div>
+    <div class="hband hband-top"></div><div class="hband hband-bot"></div>
+    <div class="hero-eye">𓂀 𓅓 𓋀 𓏏 𓂀</div>
+    <p class="hero-sub">عَبْرَ آلَافِ السِّنِينَ مِنَ التَّارِيخ</p>
+    <h1 class="hero-title">مُلُوكُ مِصْرَ الْعِظَام</h1>
+    <div class="hero-desc-wrap">
+      <p class="hero-desc">مِنْ فَجْرِ التَّارِيخِ إِلَى آخِرِ الْفَرَاعِنَة</p>
+      <p class="hero-desc-sub">رِحْلَةٌ عَبْرَ حَضَارَةٍ بَنَتِ الْأَهْرَامَاتِ وَنَحَتَتْ أَسْمَاءَهَا عَلَى جُدْرَانِ الْخُلُود</p>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div></div>
+  </section>
+
+  <section id="facts">
+    <div class="facts-grid">
+      <div class="fact-item reveal"><div class="fact-icon">👑</div><div class="fact-num" data-target="66">0</div><div class="fact-lbl">فِرْعَوْنٌ فِي هَذَا الْمَوْقِع</div></div>
+      <div class="fact-item reveal"><div class="fact-icon">📅</div><div class="fact-num" data-target="3000">0</div><div class="fact-lbl">سَنَةٌ مِنَ الْحَضَارَة</div></div>
+      <div class="fact-item reveal"><div class="fact-icon">🏛️</div><div class="fact-num" data-target="31">0</div><div class="fact-lbl">أُسْرَةٌ مَلَكِيَّة</div></div>
+      <div class="fact-item reveal"><div class="fact-icon">🔺</div><div class="fact-num" data-target="138">0</div><div class="fact-lbl">هَرَمٌ فِرْعَوْنِيّ</div></div>
+    </div>
+  </section>
+
+  <section id="kings">
+    <div class="sec-title reveal"><span class="lbl">𓋀 — شَجَرَةُ الْأُسَرِ الْمَلَكِيَّة — 𓋀</span><h2>أَعْظَمُ الْفَرَاعِنَة</h2></div>
+    <div class="eras-nav">
+      <button class="era-btn active" onclick="filterKings('all',this)">الْكُلّ</button>
+      <button class="era-btn" onclick="filterKings('old',this)">الدَّوْلَةُ الْقَدِيمَة</button>
+      <button class="era-btn" onclick="filterKings('middle',this)">الدَّوْلَةُ الْوُسْطَى</button>
+      <button class="era-btn" onclick="filterKings('new',this)">الدَّوْلَةُ الْحَدِيثَة</button>
+      <button class="era-btn" onclick="filterKings('late',this)">الْعَصْرُ الْمُتَأَخِّر</button>
+      <button class="era-btn" onclick="filterKings('ptolemaic',this)">الْبَطَالِمَة</button>
+    </div>
+    <div class="kings-grid" id="kingsGrid"></div>
+  </section>
+
+  <div class="divider reveal"><div class="div-line"></div><div class="div-sym">𓂀</div><div class="div-line"></div></div>
+
+  <section id="timeline">
+    <div class="tl-line"></div>
+    <div class="sec-title reveal"><span class="lbl">التَّرْتِيبُ الزَّمَنِيّ</span><h2>خَطُّ الزَّمَنِ الْمَلَكِيّ</h2></div>
+    <div class="tl-items" id="tlItems"></div>
+  </section>
+
+  <footer><div class="f-eye">𓂀</div><p>مُلُوكُ مِصْرَ الْعِظَام · حَضَارَةٌ خَالِدَةٌ عَبْرَ الْأَجْيَال</p></footer>
+</div>
+
+<!-- ══════ KING PAGE ══════ -->
+<div id="page-king">
+  <button class="back-btn" onclick="goHome()">← عَوْدَةٌ لِلرَّئِيسِيَّة</button>
+  <div class="kp-hero">
+    <div class="kp-art" id="kp-art"></div>
+    <div class="kp-overlay"></div>
+    <div class="kp-hband"></div>
+    <div class="kp-hero-content">
+      <div class="kp-badge" id="kp-badge"></div>
+      <div class="kp-name" id="kp-name"></div>
+      <div class="kp-latin" id="kp-latin"></div>
+    </div>
+  </div>
+  <div class="kp-body">
+    <div class="kp-grid">
+      <div>
+        <div class="kp-sec"><div class="kp-sec-lbl">نَبْذَةٌ عَامَّة</div><div class="kp-sec-txt" id="kp-overview"></div></div>
+        <div class="kp-sec"><div class="kp-sec-lbl">الْإِنْجَازَاتُ وَالْأَعْمَال</div><div class="kp-sec-txt" id="kp-achieve"></div></div>
+        <div class="kp-sec"><div class="kp-sec-lbl">الْأَثَرُ فِي التَّارِيخ</div><div class="kp-sec-txt" id="kp-legacy"></div></div>
+        <div class="kp-sec"><div class="kp-sec-lbl">الْكَلِمَاتُ الْمِفْتَاحِيَّة</div><div class="kp-tags" id="kp-tags"></div></div>
+      </div>
+      <div>
+        <div class="kp-infobox">
+          <div class="kp-infobox-title">مَعْلُومَاتٌ سَرِيعَة</div>
+          <div id="kp-info"></div>
+        </div>
+        <div class="kp-gallery" id="kp-gallery"></div>
+      </div>
+    </div>
+  </div>
+  <div class="kp-nav">
+    <button class="kp-nav-btn" id="btn-prev" onclick="navKing(-1)">→ الْفِرْعَوْنُ السَّابِق</button>
+    <button class="kp-nav-btn" id="btn-next" onclick="navKing(1)">الْفِرْعَوْنُ التَّالِي ←</button>
+  </div>
+</div>
+
+<script>
+// ── Cursor
+const cur=document.getElementById('cursor'),curD=document.getElementById('cursorDot');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';curD.style.left=e.clientX+'px';curD.style.top=e.clientY+'px'});
+
+// ── SVG Art Generator — رسومات فرعونية SVG مدمجة
+function makeSVG(k, w='100%', h='100%') {
+  const palettes = {
+    old:     { bg1:'#1a0f00', bg2:'#3d2000', acc:'#c9a84c', acc2:'#8b1a1a', sky:'#1a0800' },
+    middle:  { bg1:'#001a15', bg2:'#003328', acc:'#3a8a7a', acc2:'#c9a84c', sky:'#001510' },
+    new:     { bg1:'#000d1a', bg2:'#001a3d', acc:'#4a7ab5', acc2:'#c9a84c', sky:'#000810' },
+    late:    { bg1:'#1a0000', bg2:'#330000', acc:'#d05050', acc2:'#c9a84c', sky:'#100000' },
+    ptolemaic:{ bg1:'#0d001a', bg2:'#1a003d', acc:'#9060d0', acc2:'#c9a84c', sky:'#080010' },
+  };
+  const p = palettes[k.era] || palettes.old;
+  const sym = k.symbol || '𓂀';
+
+  // كل ملك ليه نمط SVG مختلف حسب شخصيته
+  const patterns = {
+    1: () => `<!-- مينا: لوحة نارمر + توحيد -->
+      <rect width="100%" height="100%" fill="${p.sky}"/>
+      <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#g1)" opacity=".7"/>
+      <!-- أرض النيل -->
+      <rect x="0" y="72%" width="100%" height="28%" fill="${p.bg2}" opacity=".6"/>
+      <!-- لوحة نارمر رمزية -->
+      <rect x="36%" y="18%" width="28%" height="54%" rx="3" fill="${p.acc}" opacity=".13" stroke="${p.acc}" stroke-width=".5"/>
+      <rect x="38%" y="20%" width="24%" height="50%" rx="2" fill="${p.bg1}" opacity=".8"/>
+      <!-- تاج مصر العليا -->
+      <polygon points="48%,22% 52%,22% 51%,30% 49%,30%" fill="${p.acc}" opacity=".7"/>
+      <!-- تاج مصر السفلى -->
+      <polygon points="49%,32% 51%,32% 52%,40% 48%,40%" fill="${p.acc2}" opacity=".7"/>
+      <!-- جسم الفرعون -->
+      <rect x="47%" y="40%" width="6%" height="18%" fill="${p.acc}" opacity=".5"/>
+      <!-- خط الأفق -->
+      <line x1="0" y1="72%" x2="100%" y2="72%" stroke="${p.acc}" stroke-width=".5" opacity=".3"/>
+      <!-- هيروغليف -->
+      <text x="50%" y="90%" text-anchor="middle" font-size="22" fill="${p.acc}" opacity=".25" font-family="serif">𓂀𓅓𓏏</text>`,
+
+    2: () => `<!-- خوفو: هرم عملاق -->
+      <defs><linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#050215"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#sky2)"/>
+      <!-- نجوم -->
+      ${[...Array(18)].map((_,i)=>`<circle cx="${5+i*5.5}%" cy="${3+Math.sin(i)*8}%" r="${.6+Math.random()*.5}" fill="white" opacity="${.3+Math.random()*.5}"/>`).join('')}
+      <!-- قمر -->
+      <circle cx="85%" cy="12%" r="3%" fill="none" stroke="#f0d080" stroke-width="1" opacity=".4"/>
+      <!-- الهرم الأكبر -->
+      <polygon points="50%,8% 12%,78% 88%,78%" fill="${p.acc}" opacity=".18" stroke="${p.acc}" stroke-width=".5"/>
+      <polygon points="50%,8% 50%,78% 12%,78%" fill="${p.bg2}" opacity=".35"/>
+      <!-- صف حجارة -->
+      ${[...Array(8)].map((_,i)=>{ const y=78-i*8.5, w=76-i*9.3, x=(100-w)/2; return `<line x1="${x}%" y1="${y}%" x2="${x+w}%" y2="${y}%" stroke="${p.acc}" stroke-width=".4" opacity=".25"/>` }).join('')}
+      <!-- رمل -->
+      <rect x="0" y="78%" width="100%" height="22%" fill="${p.bg2}" opacity=".5"/>
+      <!-- نقطة ذهبية في القمة -->
+      <circle cx="50%" cy="8%" r="1.5%" fill="${p.acc}" opacity=".8"/>
+      <text x="50%" y="93%" text-anchor="middle" font-size="18" fill="${p.acc}" opacity=".2" font-family="serif">𓇳𓂀𓋀</text>`,
+
+    3: () => `<!-- رمسيس: أبو سمبل + حرب -->
+      <defs><linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0510"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#sky3)"/>
+      <!-- تمثالان عملاقان -->
+      <!-- تمثال 1 -->
+      <rect x="10%" y="30%" width="16%" height="45%" fill="${p.acc}" opacity=".12" stroke="${p.acc}" stroke-width=".5"/>
+      <ellipse cx="18%" cy="27%" rx="8%" ry="7%" fill="${p.acc}" opacity=".15" stroke="${p.acc}" stroke-width=".5"/>
+      <!-- تمثال 2 -->
+      <rect x="74%" y="30%" width="16%" height="45%" fill="${p.acc}" opacity=".12" stroke="${p.acc}" stroke-width=".5"/>
+      <ellipse cx="82%" cy="27%" rx="8%" ry="7%" fill="${p.acc}" opacity=".15" stroke="${p.acc}" stroke-width=".5"/>
+      <!-- المعبد -->
+      <rect x="28%" y="48%" width="44%" height="27%" fill="${p.bg2}" opacity=".7" stroke="${p.acc}" stroke-width=".5"/>
+      <rect x="25%" y="45%" width="50%" height="5%" fill="${p.acc}" opacity=".2"/>
+      <!-- شمس مشرقة -->
+      <circle cx="50%" cy="20%" r="5%" fill="${p.acc}" opacity=".25"/>
+      ${[...Array(12)].map((_,i)=>{ const a=i*30*Math.PI/180; return `<line x1="50%" y1="20%" x2="${50+Math.cos(a)*12}%" y2="${20+Math.sin(a)*10}%" stroke="${p.acc}" stroke-width=".6" opacity=".18"/>` }).join('')}
+      <!-- رمل -->
+      <rect x="0" y="75%" width="100%" height="25%" fill="#2a1500" opacity=".5"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="18" fill="${p.acc}" opacity=".22" font-family="serif">𓇳𓂀𓅓𓋀</text>`,
+
+    4: () => `<!-- تحتمس الثالث: حملات حربية -->
+      <defs><linearGradient id="sky4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#sky4)"/>
+      <!-- جيش يسير -->
+      ${[...Array(6)].map((_,i)=>`
+        <line x1="${8+i*14}%" y1="60%" x2="${8+i*14}%" y2="75%" stroke="${p.acc}" stroke-width="1.2" opacity=".35"/>
+        <circle cx="${8+i*14}%" cy="55%" r="3%" fill="${p.acc}" opacity=".2"/>
+        <line x1="${8+i*14}%" y1="52%" x2="${12+i*14}%" y2="44%" stroke="${p.acc2}" stroke-width=".8" opacity=".4"/>
+      `).join('')}
+      <!-- خريطة الإمبراطورية رمزية -->
+      <rect x="20%" y="15%" width="60%" height="25%" rx="2" fill="${p.acc}" opacity=".07" stroke="${p.acc}" stroke-width=".5"/>
+      <!-- نقاط مدن -->
+      ${[...Array(5)].map((_,i)=>`<circle cx="${28+i*12}%" cy="${20+Math.sin(i)*5}%" r="1.5%" fill="${p.acc}" opacity=".5"/>`).join('')}
+      <!-- أرض -->
+      <rect x="0" y="75%" width="100%" height="25%" fill="${p.bg2}" opacity=".5"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="18" fill="${p.acc}" opacity=".22" font-family="serif">𓂀𓅓𓋀𓇳</text>`,
+
+    5: () => `<!-- حتشبسوت: الدير البحري + بعثة بونت -->
+      <defs><linearGradient id="sky5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#050010"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#sky5)"/>
+      <!-- جبل الدير البحري -->
+      <polygon points="0,45% 30%,15% 100%,35% 100%,100% 0,100%" fill="${p.bg2}" opacity=".6"/>
+      <!-- المعبد بمدرجاته -->
+      <rect x="5%" y="48%" width="55%" height="8%" fill="${p.acc}" opacity=".18" stroke="${p.acc}" stroke-width=".5"/>
+      <rect x="10%" y="40%" width="45%" height="8%" fill="${p.acc}" opacity=".14" stroke="${p.acc}" stroke-width=".4"/>
+      <rect x="15%" y="32%" width="35%" height="8%" fill="${p.acc}" opacity=".1" stroke="${p.acc}" stroke-width=".4"/>
+      <!-- سفينة بونت -->
+      <path d="M 68%,62% Q 80%,55% 92%,62% L 90%,68% L 70%,68% Z" fill="${p.acc}" opacity=".2" stroke="${p.acc}" stroke-width=".5"/>
+      <line x1="80%" y1="55%" x2="80%" y2="40%" stroke="${p.acc}" stroke-width=".8" opacity=".4"/>
+      <line x1="73%" y1="42%" x2="87%" y2="42%" stroke="${p.acc}" stroke-width=".6" opacity=".35"/>
+      <!-- زهرة لوتس -->
+      <ellipse cx="50%" cy="80%" rx="3%" ry="5%" fill="${p.acc}" opacity=".15"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="18" fill="${p.acc}" opacity=".22" font-family="serif">𓂀𓅓𓏏𓋀</text>`,
+
+    6: () => `<!-- أخناتون: قرص الأتون -->
+      <defs>
+        <radialGradient id="sun6" cx="50%" cy="30%" r="40%">
+          <stop offset="0%" stop-color="${p.acc2}" stop-opacity=".6"/>
+          <stop offset="60%" stop-color="${p.acc}" stop-opacity=".15"/>
+          <stop offset="100%" stop-color="${p.bg1}" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="bg6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#bg6)"/>
+      <rect width="100%" height="100%" fill="url(#sun6)"/>
+      <!-- قرص الأتون -->
+      <circle cx="50%" cy="28%" r="8%" fill="${p.acc}" opacity=".3" stroke="${p.acc}" stroke-width="1"/>
+      <!-- أشعة الأتون بأيادي -->
+      ${[...Array(14)].map((_,i)=>{ const a=(i*25.7-90)*Math.PI/180; const r1=9,r2=22; const x1=50+Math.cos(a)*r1, y1=28+Math.sin(a)*r1*.75, x2=50+Math.cos(a)*r2, y2=28+Math.sin(a)*r2*.75; return `<line x1="${x1}%" y1="${y1}%" x2="${x2}%" y2="${y2}%" stroke="${p.acc}" stroke-width="1" opacity=".35"/><circle cx="${x2}%" cy="${y2}%" r=".8%" fill="${p.acc}" opacity=".4"/>` }).join('')}
+      <!-- عائلة تحت الأشعة -->
+      <rect x="44%" y="55%" width="4%" height="15%" fill="${p.acc}" opacity=".2"/>
+      <circle cx="46%" cy="52%" r="2.5%" fill="${p.acc}" opacity=".2"/>
+      <rect x="52%" y="55%" width="4%" height="15%" fill="${p.acc}" opacity=".2"/>
+      <circle cx="54%" cy="52%" r="2.5%" fill="${p.acc}" opacity=".2"/>
+      <rect x="0" y="70%" width="100%" height="30%" fill="${p.bg2}" opacity=".5"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="18" fill="${p.acc}" opacity=".22" font-family="serif">𓇳𓂀</text>`,
+
+    7: () => `<!-- توت عنخ آمون: القناع الذهبي -->
+      <defs><radialGradient id="glow7" cx="50%" cy="40%" r="35%"><stop offset="0%" stop-color="${p.acc}" stop-opacity=".25"/><stop offset="100%" stop-color="${p.bg1}" stop-opacity="0"/></radialGradient>
+      <linearGradient id="bg7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#bg7)"/>
+      <rect width="100%" height="100%" fill="url(#glow7)"/>
+      <!-- القناع - الرأس -->
+      <ellipse cx="50%" cy="30%" rx="11%" ry="13%" fill="${p.acc}" opacity=".22" stroke="${p.acc}" stroke-width=".8"/>
+      <!-- غطاء الرأس الذهبي -->
+      <rect x="38%" y="25%" width="24%" height="32%" rx="1" fill="${p.acc}" opacity=".12" stroke="${p.acc}" stroke-width=".5"/>
+      <!-- خطوط الحلي -->
+      ${[...Array(5)].map((_,i)=>`<line x1="38%" y1="${34+i*4}%" x2="62%" y2="${34+i*4}%" stroke="${p.acc}" stroke-width=".4" opacity=".3"/>`).join('')}
+      <!-- العيون -->
+      <ellipse cx="46%" cy="28%" rx="2%" ry="1.2%" fill="${p.bg1}" stroke="${p.acc}" stroke-width=".5"/>
+      <ellipse cx="54%" cy="28%" rx="2%" ry="1.2%" fill="${p.bg1}" stroke="${p.acc}" stroke-width=".5"/>
+      <!-- اللحية الاصطناعية -->
+      <rect x="47%" y="42%" width="6%" height="8%" rx="1" fill="${p.acc}" opacity=".25"/>
+      <!-- زخارف -->
+      <text x="50%" y="92%" text-anchor="middle" font-size="20" fill="${p.acc}" opacity=".25" font-family="serif">𓂀𓇳𓋀</text>`,
+
+    8: () => `<!-- سيتي الأول: معبد أبيدوس -->
+      <defs><linearGradient id="bg8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#bg8)"/>
+      <!-- معبد أبيدوس بأعمدته -->
+      <rect x="5%" y="35%" width="90%" height="40%" fill="${p.bg2}" opacity=".6" stroke="${p.acc}" stroke-width=".5"/>
+      <!-- أعمدة -->
+      ${[...Array(7)].map((_,i)=>`
+        <rect x="${10+i*12}%" y="35%" width="6%" height="40%" fill="${p.acc}" opacity=".12" stroke="${p.acc}" stroke-width=".4"/>
+        <rect x="${9+i*12}%" y="33%" width="8%" height="3%" fill="${p.acc}" opacity=".2"/>
+      `).join('')}
+      <!-- المسلة -->
+      <polygon points="48%,8% 52%,8% 53%,35% 47%,35%" fill="${p.acc}" opacity=".25"/>
+      <polygon points="48%,6% 52%,6% 50%,2%" fill="${p.acc}" opacity=".4"/>
+      <!-- نقوش على الجدار -->
+      <text x="20%" y="52%" font-size="14" fill="${p.acc}" opacity=".25" font-family="serif">𓂀𓅓</text>
+      <text x="50%" y="52%" font-size="14" fill="${p.acc}" opacity=".25" font-family="serif">𓋀𓏏</text>
+      <text x="75%" y="52%" font-size="14" fill="${p.acc}" opacity=".25" font-family="serif">𓇳𓂀</text>
+      <rect x="0" y="75%" width="100%" height="25%" fill="${p.bg2}" opacity=".5"/>`,
+
+    9: () => `<!-- بسماتيك: عصر صاوي + إغريق -->
+      <defs><linearGradient id="bg9" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#bg9)"/>
+      <!-- البحر المتوسط أمواج -->
+      ${[...Array(5)].map((_,i)=>`<path d="M ${i*25}%,${62+Math.sin(i)*3}% Q ${i*25+8}%,${57+Math.sin(i)*3}% ${i*25+16}%,${62+Math.sin(i)*3}%" fill="none" stroke="${p.acc}" stroke-width=".8" opacity=".2"/>`).join('')}
+      <!-- سفينة إغريقية -->
+      <path d="M 30%,58% Q 50%,48% 70%,58% L 68%,65% L 32%,65% Z" fill="${p.acc}" opacity=".15" stroke="${p.acc}" stroke-width=".5"/>
+      <line x1="50%" y1="48%" x2="50%" y2="30%" stroke="${p.acc}" stroke-width=".8" opacity=".35"/>
+      <line x1="38%" y1="35%" x2="62%" y2="35%" stroke="${p.acc}" stroke-width=".6" opacity=".3"/>
+      <!-- مدينة صاوي -->
+      ${[...Array(5)].map((_,i)=>`<rect x="${15+i*14}%" y="${40-i%2*8}%" width="10%" height="${18+i%2*8}%" fill="${p.acc}" opacity=".1" stroke="${p.acc}" stroke-width=".4"/>`).join('')}
+      <rect x="0" y="65%" width="100%" height="35%" fill="${p.bg2}" opacity=".5"/>
+      <text x="50%" y="90%" text-anchor="middle" font-size="16" fill="${p.acc}" opacity=".2" font-family="serif">𓂀𓅓𓋀</text>`,
+
+    10: () => `<!-- نختنبو: آخر الفراعنة + فرار -->
+      <defs><linearGradient id="bg10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#bg10)"/>
+      <!-- معبد منهار -->
+      <rect x="10%" y="30%" width="35%" height="45%" fill="${p.acc}" opacity=".1" stroke="${p.acc}" stroke-width=".5" transform="rotate(-2,27%,52%)"/>
+      <rect x="55%" y="40%" width="30%" height="35%" fill="${p.acc}" opacity=".07" stroke="${p.acc}" stroke-width=".4" transform="rotate(3,70%,57%)"/>
+      <!-- جيش فارسي قادم من اليسار -->
+      ${[...Array(8)].map((_,i)=>`<line x1="${2+i*5}%" y1="65%" x2="${2+i*5}%" y2="75%" stroke="${p.acc2}" stroke-width="1" opacity=".4"/><circle cx="${2+i*5}%" cy="61%" r="2%" fill="${p.acc2}" opacity=".2"/>`).join('')}
+      <!-- شكل هارب للجنوب -->
+      <path d="M 70%,50% L 85%,65% L 90%,58% L 78%,45% Z" fill="${p.acc}" opacity=".15"/>
+      <rect x="0" y="75%" width="100%" height="25%" fill="${p.bg2}" opacity=".5"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="16" fill="${p.acc}" opacity=".2" font-family="serif">𓂀𓋀</text>`,
+
+    11: () => `<!-- بطليموس: مكتبة الإسكندرية -->
+      <defs><linearGradient id="bg11" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#bg11)"/>
+      <!-- مبنى المكتبة بأعمدة إغريقية -->
+      <rect x="10%" y="30%" width="80%" height="45%" fill="${p.acc}" opacity=".08" stroke="${p.acc}" stroke-width=".5"/>
+      <!-- إفريز -->
+      <rect x="8%" y="27%" width="84%" height="5%" fill="${p.acc}" opacity=".18"/>
+      <!-- أعمدة -->
+      ${[...Array(8)].map((_,i)=>`<rect x="${14+i*10}%" y="30%" width="5%" height="45%" fill="${p.acc}" opacity=".14" stroke="${p.acc}" stroke-width=".4"/>`).join('')}
+      <!-- لفائف ورق البردي -->
+      ${[...Array(4)].map((_,i)=>`<ellipse cx="${25+i*18}%" cy="60%" rx="3.5%" ry="5%" fill="${p.acc}" opacity=".2" stroke="${p.acc}" stroke-width=".4"/>`).join('')}
+      <!-- فانوس الإسكندرية -->
+      <rect x="47%" y="5%" width="6%" height="22%" fill="${p.acc}" opacity=".2"/>
+      <polygon points="47%,5% 53%,5% 55%,2% 45%,2%" fill="${p.acc}" opacity=".3"/>
+      <circle cx="50%" cy="2%" r="1.5%" fill="${p.acc}" opacity=".5"/>
+      <rect x="0" y="75%" width="100%" height="25%" fill="${p.bg2}" opacity=".5"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="16" fill="${p.acc}" opacity=".2" font-family="serif">𓂀𓋀𓏏</text>`,
+
+    12: () => `<!-- كليوباترا: روما + مصر -->
+      <defs><radialGradient id="glow12" cx="50%" cy="35%" r="40%"><stop offset="0%" stop-color="${p.acc}" stop-opacity=".2"/><stop offset="100%" stop-color="${p.bg1}" stop-opacity="0"/></radialGradient>
+      <linearGradient id="bg12" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#bg12)"/>
+      <rect width="100%" height="100%" fill="url(#glow12)"/>
+      <!-- ملكة -->
+      <ellipse cx="50%" cy="28%" rx="9%" ry="10%" fill="${p.acc}" opacity=".18" stroke="${p.acc}" stroke-width=".7"/>
+      <rect x="44%" y="37%" width="12%" height="22%" fill="${p.acc}" opacity=".15"/>
+      <!-- تاج مصري -->
+      <polygon points="46%,18% 54%,18% 52%,10% 48%,10%" fill="${p.acc2}" opacity=".4"/>
+      <!-- عصا وصولجان -->
+      <line x1="40%" y1="37%" x2="35%" y2="62%" stroke="${p.acc}" stroke-width=".8" opacity=".35"/>
+      <line x1="60%" y1="37%" x2="65%" y2="62%" stroke="${p.acc2}" stroke-width=".8" opacity=".35"/>
+      <!-- بحر المتوسط + روما -->
+      <path d="M 0,72% Q 50%,65% 100%,72% L 100%,100% L 0,100% Z" fill="${p.bg2}" opacity=".6"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="18" fill="${p.acc}" opacity=".22" font-family="serif">𓂀𓅓𓋀𓇳</text>`,
+
+    13: () => `<!-- سنفرو: ثلاثة أهرامات -->
+      <defs><linearGradient id="sky13" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040208"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#sky13)"/>
+      <!-- نجوم كثيرة -->
+      ${[...Array(25)].map((_,i)=>`<circle cx="${i*4+2}%" cy="${2+Math.sin(i*0.8)*10}%" r=".5" fill="white" opacity="${.2+Math.random()*.5}"/>`).join('')}
+      <!-- الهرم المنحني (الأكبر وسط) -->
+      <polygon points="50%,12% 18%,75% 82%,75%" fill="${p.acc}" opacity=".22" stroke="${p.acc}" stroke-width=".6"/>
+      <!-- ميل الهرم المنحني -->
+      <line x1="50%" y1="12%" x2="50%" y2="38%" stroke="${p.acc}" stroke-width=".5" opacity=".3"/>
+      <line x1="50%" y1="38%" x2="18%" y2="75%" stroke="${p.acc}" stroke-width=".5" opacity=".3" stroke-dasharray="2"/>
+      <!-- الهرم الأحمر (يمين) -->
+      <polygon points="78%,30% 58%,75% 98%,75%" fill="${p.acc2}" opacity=".15" stroke="${p.acc2}" stroke-width=".5"/>
+      <!-- هرم ميدوم (يسار صغير) -->
+      <polygon points="16%,45% 2%,75% 30%,75%" fill="${p.acc}" opacity=".12" stroke="${p.acc}" stroke-width=".4"/>
+      <!-- رمل -->
+      <rect x="0" y="75%" width="100%" height="25%" fill="#2a1500" opacity=".5"/>
+      <text x="50%" y="93%" text-anchor="middle" font-size="16" fill="${p.acc}" opacity=".2" font-family="serif">𓇳𓋀𓂀</text>`,
+
+    14: () => `<!-- أمنحتب: تماثيل ممنون + الأقصر -->
+      <defs><linearGradient id="sky14" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#060310"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#sky14)"/>
+      <!-- تمثال ممنون الأول -->
+      <rect x="20%" y="28%" width="14%" height="47%" fill="${p.acc}" opacity=".15" stroke="${p.acc}" stroke-width=".6"/>
+      <ellipse cx="27%" cy="24%" rx="8%" ry="8%" fill="${p.acc}" opacity=".18" stroke="${p.acc}" stroke-width=".6"/>
+      <!-- تفاصيل التمثال -->
+      <rect x="21%" y="28%" width="12%" height="4%" fill="${p.acc}" opacity=".25"/>
+      <!-- تمثال ممنون الثاني -->
+      <rect x="66%" y="28%" width="14%" height="47%" fill="${p.acc}" opacity=".15" stroke="${p.acc}" stroke-width=".6"/>
+      <ellipse cx="73%" cy="24%" rx="8%" ry="8%" fill="${p.acc}" opacity=".18" stroke="${p.acc}" stroke-width=".6"/>
+      <rect x="67%" y="28%" width="12%" height="4%" fill="${p.acc}" opacity=".25"/>
+      <!-- نيل لامع بينهما -->
+      <path d="M 38%,55% Q 50%,50% 62%,55% Q 50%,60% 38%,55% Z" fill="${p.acc}" opacity=".12"/>
+      <!-- قرص الشمس -->
+      <circle cx="50%" cy="18%" r="4%" fill="${p.acc}" opacity=".2"/>
+      <rect x="0" y="75%" width="100%" height="25%" fill="${p.bg2}" opacity=".5"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="16" fill="${p.acc}" opacity=".2" font-family="serif">𓂀𓋀𓇳</text>`,
+
+    15: () => `<!-- منتوحتب: توحيد مصر الوسطى -->
+      <defs><linearGradient id="bg15" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="50%" stop-color="${p.bg2}"/><stop offset="100%" stop-color="${p.bg1}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="${p.sky}"/>
+      <rect width="100%" height="100%" fill="url(#bg15)" opacity=".8"/>
+      <!-- تاجان يلتقيان (توحيد مصر) -->
+      <!-- تاج الجنوب الأبيض -->
+      <polygon points="30%,45% 38%,45% 36%,15% 32%,15%" fill="${p.acc}" opacity=".3" stroke="${p.acc}" stroke-width=".5"/>
+      <ellipse cx="34%" cy="45%" rx="6%" ry="4%" fill="${p.acc}" opacity=".2" stroke="${p.acc}" stroke-width=".5"/>
+      <!-- تاج الشمال الأحمر -->
+      <rect x="56%" y="25%" width="14%" height="20%" rx="1" fill="${p.acc2}" opacity=".2" stroke="${p.acc2}" stroke-width=".5"/>
+      <polygon points="56%,25% 70%,25% 68%,20% 58%,20%" fill="${p.acc2}" opacity=".25"/>
+      <!-- خط يوحد التاجين -->
+      <line x1="40%" y1="35%" x2="56%" y2="35%" stroke="${p.acc}" stroke-width="1.5" opacity=".4" stroke-dasharray="3"/>
+      <!-- معبد الدير البحري -->
+      <rect x="20%" y="58%" width="60%" height="18%" fill="${p.acc}" opacity=".1" stroke="${p.acc}" stroke-width=".4"/>
+      ${[...Array(6)].map((_,i)=>`<rect x="${23+i*9}%" y="58%" width="5%" height="18%" fill="${p.acc}" opacity=".1"/>`).join('')}
+      <rect x="0" y="76%" width="100%" height="24%" fill="${p.bg2}" opacity=".5"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="16" fill="${p.acc}" opacity=".22" font-family="serif">𓂀𓅓𓋀</text>`,
+
+    16: () => `<!-- تحتمس الأول: وادي الملوك + الفرات -->
+      <defs><linearGradient id="bg16" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${p.bg1}"/><stop offset="100%" stop-color="${p.bg2}"/></linearGradient></defs>
+      <rect width="100%" height="100%" fill="url(#bg16)"/>
+      <!-- جبال وادي الملوك -->
+      <polygon points="0,100% 0,55% 20%,25% 40%,50% 60%,20% 80%,45% 100%,30% 100%,100%" fill="${p.bg2}" opacity=".7"/>
+      <!-- مدخل المقبرة -->
+      <path d="M 47%,58% L 53%,58% L 53%,68% Q 50%,72% 47%,68% Z" fill="${p.acc}" opacity=".3" stroke="${p.acc}" stroke-width=".5"/>
+      <!-- نيل الفرات رمزياً -->
+      <path d="M 0,72% Q 25%,68% 50%,72% Q 75%,76% 100%,72%" fill="none" stroke="${p.acc}" stroke-width="1.5" opacity=".25"/>
+      <!-- نصب انتصار -->
+      <rect x="65%" y="30%" width="4%" height="25%" fill="${p.acc}" opacity=".25"/>
+      <polygon points="64%,30% 70%,30% 67%,24%" fill="${p.acc}" opacity=".35"/>
+      <!-- جيش -->
+      ${[...Array(5)].map((_,i)=>`<line x1="${20+i*8}%" y1="62%" x2="${20+i*8}%" y2="70%" stroke="${p.acc}" stroke-width="1" opacity=".3"/>`).join('')}
+      <rect x="0" y="72%" width="100%" height="28%" fill="${p.bg2}" opacity=".5"/>
+      <text x="50%" y="92%" text-anchor="middle" font-size="16" fill="${p.acc}" opacity=".22" font-family="serif">𓂀𓋀𓇳</text>`,
+  };
+
+  const draw = patterns[k.id] ? patterns[k.id]() : patterns[1]();
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+    ${draw}
+    <!-- طبقة نمط فرعوني خفيفة -->
+    <pattern id="pt" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <text x="2" y="14" font-size="10" fill="${p.acc}" opacity=".04" font-family="serif">𓂀</text>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#pt)"/>
+  </svg>`;
+}
+
+// ── Kings Data
+const kings = [
+  { id:1,  name:'مينا (نارمر)',         latin:'Narmer / Menes',             era:'old',        badge:'badge-old',   eraName:'الدَّوْلَةُ الْقَدِيمَة',    reign:'٣١٠٠ ق.م', dynasty:'الْأُسْرَةُ الْأُولَى',              capital:'مَنْف',
+    desc:'مُوَحِّدُ مِصْرَ الْعُلْيَا وَالسُّفْلَى، مُؤَسِّسُ أَوَّلِ أُسْرَةٍ مَلَكِيَّةٍ فِي التَّارِيخ.',
+    overview:'يُعَدُّ مِينَا الْمُؤَسِّسَ الْحَقِيقِيَّ لِلدَّوْلَةِ الْمِصْرِيَّةِ الْمُوَحَّدَة. نَجَحَ فِي ضَمِّ مِصْرَ الْعُلْيَا وَالسُّفْلَى تَحْتَ رَايَةٍ وَاحِدَة، وَأَسَّسَ مَدِينَةَ مَنْفٍ عَاصِمَةً لِلْمَمْلَكَة. لَوْحَةُ نَارْمَر الشَّهِيرَةُ تُصَوِّرُهُ مُنْتَصِرًا يَرْتَدِي تَاجَ الشَّمَالِ وَالْجَنُوبِ مَعًا.',
+    achievements:'وَضَعَ أُسُسَ نِظَامِ الْحُكْمِ الْفِرْعَوْنِيِّ الَّذِي دَامَ ثَلَاثَةَ آلَافِ سَنَة. أَمَرَ بِبِنَاءِ مَدِينَةِ مَنْفٍ عَاصِمَةً جَدِيدَة. خَلَّفَ لَوْحَةَ نَارْمَر مِنْ أَقْدَمِ الْوَثَائِقِ التَّارِيخِيَّةِ فِي الْعَالَم.',
+    legacy:'يُمَثِّلُ مِينَا نُقْطَةَ التَّحَوُّلِ الْكُبْرَى مِنَ الْقَبَائِلِ الْمُتَفَرِّقَةِ إِلَى الدَّوْلَةِ الْمَرْكَزِيَّة. يَعْتَبِرُهُ الْمُؤَرِّخُونَ أَبَا الْحَضَارَةِ الْمِصْرِيَّةِ كُلِّهَا.',
+    tags:['تَوْحِيدُ مِصْر','تَأْسِيسُ مَنْف','الْأُسْرَةُ الْأُولَى','لَوْحَةُ نَارْمَر'] },
+
+  { id:2,  name:'خُوفُو',               latin:'Khufu / Cheops',             era:'old',        badge:'badge-old',   eraName:'الدَّوْلَةُ الْقَدِيمَة',    reign:'٢٥٨٩–٢٥٦٦ ق.م', dynasty:'الْأُسْرَةُ الرَّابِعَة',      capital:'مَنْف',
+    desc:'بَانِي الْهَرَمِ الْأَكْبَرِ بِالْجِيزَة، أَحَدُ عَجَائِبِ الدُّنْيَا السَّبْعِ الْبَاقِيَة.',
+    overview:'خُوفُو مِنَ الْأُسْرَةِ الرَّابِعَةِ أَحَدُ أَشْهَرِ فَرَاعِنَةِ مِصْرَ عَلَى الْإِطْلَاق. أَمَرَ بِبِنَاءِ الْهَرَمِ الْأَكْبَرِ فِي الْجِيزَةِ الَّذِي ظَلَّ أَطْوَلَ بِنَاءٍ فِي الْعَالَمِ لِأَكْثَرَ مِنْ ثَلَاثَةٍ وَثَمَانِينَ وَثَمَانِمِائَةِ عَام.',
+    achievements:'شَيَّدَ الْهَرَمَ الْأَكْبَرَ مِنْ مِلْيُونَيْنِ وَثَلَاثِمِائَةِ أَلْفِ قَطْعَةِ حِجَارَة. أَنْشَأَ مَجْمَعَ أَهْرَامَاتِ الْجِيزَةِ الشَّهِير. وَضَعَ نِظَامًا إِدَارِيًّا بَالِغَ الْكَفَاءَة.',
+    legacy:'الْهَرَمُ الْأَكْبَرُ هُوَ الْوَحِيدُ الْبَاقِي مِنْ عَجَائِبِ الدُّنْيَا السَّبْعِ الْقَدِيمَة. لَا تَزَالُ طَرِيقَةُ بِنَائِهِ تُثِيرُ الدَّهْشَةَ وَالْجَدَلَ حَتَّى الْيَوْم.',
+    tags:['الْهَرَمُ الْأَكْبَر','عَجَائِبُ الدُّنْيَا','الْأُسْرَةُ الرَّابِعَة','الْجِيزَة'] },
+
+  { id:3,  name:'رَمْسِيسُ الثَّانِي',  latin:'Ramesses II — The Great',    era:'new',        badge:'badge-new',   eraName:'الدَّوْلَةُ الْحَدِيثَة',    reign:'١٢٧٩–١٢١٣ ق.م', dynasty:'الْأُسْرَةُ التَّاسِعَةَ عَشَرَة', capital:'بِيـ-رَمْسِيس',
+    desc:'أَعْظَمُ فَرَاعِنَةِ مِصْرَ وَأَشْهَرُهُمْ. حَكَمَ لِأَكْثَرَ مِنْ سِتَّةٍ وَسِتِّينَ عَامًا وَخَلَّفَ آثَارًا لَا تُحْصَى.',
+    overview:'رَمْسِيسُ الثَّانِي أَوْ رَمْسِيسُ الْعَظِيمُ حَكَمَ مِصْرَ لِمَا يَزِيدُ عَلَى سِتَّةٍ وَسِتِّينَ عَامًا، مِنْ أَطْوَلِ فَتَرَاتِ الْحُكْمِ فِي التَّارِيخ. شَهِدَ عَصْرُهُ ذِرْوَةَ الْقُوَّةِ الْمِصْرِيَّة.',
+    achievements:'اشْتَهَرَ بِمَعْرَكَةِ قَادِشَ الَّتِي أَفْضَتْ إِلَى أَوَّلِ مُعَاهَدَةِ سَلَامٍ مَكْتُوبَةٍ فِي التَّارِيخ. شَيَّدَ مَعَابِدَ أَبُو سِمْبِلَ الشَّهِيرَة. رُزِقَ بِأَكْثَرَ مِنْ مِائَةِ ابْنٍ وَابْنَة.',
+    legacy:'مُعَاهَدَتُهُ مَعَ الْحِيثِيِّينَ نُصِبَتْ نُسْخَةٌ مِنْهَا فِي مَقَرِّ الْأُمَمِ الْمُتَّحِدَة. يَظَلُّ رَمْزَ الْقُوَّةِ وَالْعَظَمَةِ فِي التَّارِيخِ الْفِرْعَوْنِيِّ كُلِّه.',
+    tags:['مَعْرَكَةُ قَادِش','أَبُو سِمْبِل','أَوَّلُ مُعَاهَدَةِ سَلَام','الرَّعَامِسَة'] },
+
+  { id:4,  name:'تُحُتْمِسُ الثَّالِث', latin:'Thutmose III',               era:'new',        badge:'badge-new',   eraName:'الدَّوْلَةُ الْحَدِيثَة',    reign:'١٤٧٩–١٤٢٥ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'نَابُلْيُونُ مِصْرَ الْقَدِيمَة. قَادَ سَبْعَةَ عَشَرَ حَمْلَةً عَسْكَرِيَّةً وَوَسَّعَ حُدُودَ مِصْرَ إِلَى أَقْصَى اتِّسَاعِهَا.',
+    overview:'يُلَقِّبُهُ الْمُؤَرِّخُونَ بِـ«نَابُلْيُونَ مِصْرَ الْقَدِيمَة» لِعَبْقَرِيَّتِهِ الْعَسْكَرِيَّةِ الْفَذَّة. حَكَمَ أَوَّلًا تَحْتَ وِصَايَةِ حَتْشِبْسُوت، ثُمَّ انْفَرَدَ بِالسُّلْطَة.',
+    achievements:'خَاضَ سَبْعَةَ عَشَرَ حَمْلَةً عَسْكَرِيَّةً مُظَفَّرَة. وَسَّعَ حُدُودَ مِصْرَ لِتَشْمَلَ بِلَادَ الشَّامِ وَالسُّودَان. بَنَى مَعَابِدَ وَمَسَلَّاتٍ رَائِعَةً فِي الْكَرْنَك.',
+    legacy:'وَصَلَتِ الْإِمْبِرَاطُورِيَّةُ الْمِصْرِيَّةُ تَحْتَ قِيَادَتِهِ إِلَى أَقْصَى اتِّسَاعِهَا مِنَ الْفُرَاتِ شَمَالًا إِلَى الشَّلَّالِ الرَّابِعِ جَنُوبًا.',
+    tags:['الْفَاتِحُ الْعَظِيم','مَعْرَكَةُ مَجِيدُو','قَائِدٌ عَسْكَرِيّ','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة'] },
+
+  { id:5,  name:'حَتْشِبْسُوت',          latin:'Hatshepsut',                 era:'new',        badge:'badge-new',   eraName:'الدَّوْلَةُ الْحَدِيثَة',    reign:'١٤٧٩–١٤٥٨ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'أَقْوَى مَلِكَاتِ مِصْرَ. ارْتَدَتْ زِيَّ الْفَرَاعِنَةِ الذُّكُورِ وَحَكَمَتْ بِحِكْمَةٍ وَكَفَاءَةٍ مُنْقَطِعَةِ النَّظِير.',
+    overview:'حَتْشِبْسُوتُ مِنْ أَبْرَزِ النِّسَاءِ فِي التَّارِيخِ الْقَدِيمِ كُلِّه. تَوَلَّتِ الْحُكْمَ وَصِيَّةً ثُمَّ أَعْلَنَتْ نَفْسَهَا فِرْعَوْنًا وَارْتَدَتِ الْخَنْمَسَ الْمَلَكِيَّ وَاللِّحْيَةَ الِاصْطِنَاعِيَّة.',
+    achievements:'أَرْسَلَتْ بَعْثَةً تِجَارِيَّةً إِلَى بِلَادِ بُونْت. شَيَّدَتْ مَعْبَدَ الدَّيْرِ الْبَحْرِيِّ الْخَالِد. أَقَامَتْ مَسَلَّاتٍ ضَخْمَةً فِي الْكَرْنَك. حَكَمَتْ عِشْرِينَ عَامًا فِي سَلَامٍ.',
+    legacy:'ظَلَّتْ مَجْهُولَةً لِقُرُونٍ ثُمَّ اكْتُشِفَتْ فِي الْقَرْنِ التَّاسِعَ عَشَرَ فَأَصْبَحَتْ مِنْ أَشْهَرِ شَخْصِيَّاتِ التَّارِيخِ الْأُنْثَوِيَّة.',
+    tags:['أَوَّلُ مَلِكَةٍ فِرْعَوْنِيَّة','الدَّيْرُ الْبَحْرِيّ','بَعْثَةُ بُونْت','الْكَرْنَك'] },
+
+  { id:6,  name:'أَخْنَاتُون',            latin:'Akhenaten',                  era:'new',        badge:'badge-new',   eraName:'الدَّوْلَةُ الْحَدِيثَة',    reign:'١٣٥٣–١٣٣٦ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'أَخِيتَاتُون',
+    desc:'الْفِرْعَوْنُ الثَّائِرُ الَّذِي أَعْلَنَ أَوَّلَ دِيَانَةٍ تَوْحِيدِيَّةٍ فِي التَّارِيخ وَزَوْجُ نَفَرْتِيتِي الشَّهِيرَة.',
+    overview:'أَخْنَاتُونُ أَحْدَثَ قَطِيعَةً رَادِيكَالِيَّةً مَعَ التَّقَالِيدِ الْمِصْرِيَّة. أَلْغَى عِبَادَةَ آمُونَ وَسَائِرِ الْآلِهَةِ وَفَرَضَ عِبَادَةَ الْأَتُونِ وَحْدَه.',
+    achievements:'نَقَلَ الْعَاصِمَةَ إِلَى مَدِينَةِ أَخِيتَاتُون. أَعْلَنَ أَوَّلَ دِيَانَةٍ تَوْحِيدِيَّةٍ فِي التَّارِيخ. كَانَ زَوْجًا لِلْمَلِكَةِ نَفَرْتِيتِي وَأَبًا لِتُوتٍ عَنْخِ آمُون.',
+    legacy:'تَلُّ الْعَمَارِنَةُ لَا يَزَالُ مَوْقِعًا أَثَرِيًّا بَالِغَ الْأَهَمِّيَّة. بَعْضُ الْمُؤَرِّخِينَ يَعْتَبِرُونَ ثَوْرَتَهُ بَذْرَةً لِلتَّوْحِيدِ الدِّينِيِّ الَّذِي جَاءَ لَاحِقًا.',
+    tags:['الثَّوْرَةُ الدِّينِيَّة','عِبَادَةُ الْأَتُون','تَلُّ الْعَمَارِنَة','نَفَرْتِيتِي'] },
+
+  { id:7,  name:'تُوتٌ عَنْخِ آمُون',    latin:'Tutankhamun',                era:'new',        badge:'badge-new',   eraName:'الدَّوْلَةُ الْحَدِيثَة',    reign:'١٣٣٢–١٣٢٣ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'مَنْف',
+    desc:'الْفِرْعَوْنُ الصَّبِيُّ الَّذِي مَاتَ شَابًّا، وَخَلَّدَ اكْتِشَافُ مَقْبَرَتِهِ الذَّهَبِيَّةِ اسْمَهُ لِلْأَبَد.',
+    overview:'حَكَمَ وَهُوَ فِي الْعَاشِرَةِ مِنْ عُمْرِهِ وَتُوُفِّيَ قَبْلَ الْعِشْرِين. ظَلَّ مَنْسِيًّا حَتَّى اكْتَشَفَ كَارْتَر مَقْبَرَتَهُ شِبْهَ سَلِيمَةٍ عَامَ ١٩٢٢.',
+    achievements:'خَلَّفَ كُنُوزًا لَا تُقَدَّرُ فِي مَقْبَرَتِهِ. الْقِنَاعُ الذَّهَبِيُّ لِمُومِيَائِهِ الْأَشْهَرُ فِي التَّارِيخ. أَعَادَ عِبَادَةَ آمُون.',
+    legacy:'أَصْبَحَ أَشْهَرَ فَرَاعِنَةِ مِصْرَ فِي الْعَصْرِ الْحَدِيث. اكْتِشَافُ مَقْبَرَتِهِ أَشْعَلَ اهْتِمَامَ الْعَالَمِ بِالْحَضَارَةِ الْمِصْرِيَّة.',
+    tags:['مَقْبَرَةُ الْكُنُوز','الْقِنَاعُ الذَّهَبِيّ','اكْتِشَافُ ١٩٢٢','لَعْنَةُ الْفَرَاعِنَة'] },
+
+  { id:8,  name:'سِيتِي الْأَوَّل',       latin:'Seti I',                     era:'new',        badge:'badge-new',   eraName:'الدَّوْلَةُ الْحَدِيثَة',    reign:'١٢٩٠–١٢٧٩ ق.م', dynasty:'الْأُسْرَةُ التَّاسِعَةَ عَشَرَة', capital:'مَنْف',
+    desc:'مِنْ أَعْظَمِ بُنَاةِ مِصْر. مَعْبَدُ أَبِيدُوسَ وَلَوْحَةُ الْمُلُوكِ مِنْ أَبْرَزِ إِنْجَازَاتِهِ الْخَالِدَة.',
+    overview:'سِيتِي الْأَوَّلُ أَبُو رَمْسِيسَ الثَّانِي، أَحَدُ أَعْظَمِ الْفَرَاعِنَةِ الْمُحَارِبِينَ وَالْبُنَاة. شَنَّ حَمَلَاتٍ نَاجِحَةً فِي لِيبِيَا وَكَنْعَان.',
+    achievements:'بَنَى مَعْبَدَ أَبِيدُوسَ الَّذِي يَضُمُّ لَوْحَةَ الْمُلُوك. مَقْبَرَتُهُ فِي وَادِي الْمُلُوكِ الْأَكْبَرُ وَالْأَجْمَل. نَقَشَ جُدْرَانَ الْكَرْنَكِ بِأَرُوعِ الْمَنَاظِرِ.',
+    legacy:'يُعَدُّ مِنْ أَبْرَعِ الْفَرَاعِنَةِ فِي الْعِمَارَةِ وَالنَّقْش. مَقْبَرَتُهُ تَحْفَةٌ فَنِّيَّةٌ لَا مَثِيلَ لَهَا.',
+    tags:['مَعْبَدُ أَبِيدُوس','لَوْحَةُ الْمُلُوك','وَادِي الْمُلُوك','فَاتِحُ كَنْعَان'] },
+
+  { id:9,  name:'بَسْمَاتِيكُ الْأَوَّل', latin:'Psamtik I',                  era:'late',       badge:'badge-late',  eraName:'الْعَصْرُ الْمُتَأَخِّر',    reign:'٦٦٤–٦١٠ ق.م', dynasty:'الْأُسْرَةُ السَّادِسَةُ وَالْعِشْرُون', capital:'صَايَس',
+    desc:'مُوَحِّدُ مِصْرَ فِي الْعَصْرِ الْمُتَأَخِّر. طَرَدَ الْآشُورِيِّينَ وَأَسَّسَ عَصْرَ نَهْضَةٍ ثَقَافِيَّة.',
+    overview:'بَسْمَاتِيكُ الْأَوَّلُ مُؤَسِّسُ الْأُسْرَةِ الصَّاوِيَّة. اسْتَغَلَّ انْشِغَالَ الْآشُورِيِّينَ لِيُوَحِّدَ مِصْرَ.',
+    achievements:'وَحَّدَ مِصْرَ بَعْدَ التَّشَرْذُم. فَتَحَ أَبْوَابَ مِصْرَ لِلتِّجَارَةِ الْإِغْرِيقِيَّة. أَسَّسَ نَهْضَةً ثَقَافِيَّةً وَعِلْمِيَّة.',
+    legacy:'سِيَاسَتُهُ الِانْفِتَاحِيَّةُ عَلَى الْإِغْرِيقِ أَرْسَتِ الْأُسُسَ لِلتَّلَاقُحِ الثَّقَافِيِّ فِي عَصْرِ الْبَطَالِمَة.',
+    tags:['طَرَدَ الْآشُورِيِّين','الْعَصْرُ الصَّاوِيّ','التِّجَارَةُ الْإِغْرِيقِيَّة','الْأُسْرَةُ السَّادِسَةُ وَالْعِشْرُون'] },
+
+  { id:10, name:'نَخْتَنَبُو الثَّانِي',  latin:'Nectanebo II',               era:'late',       badge:'badge-late',  eraName:'الْعَصْرُ الْمُتَأَخِّر',    reign:'٣٦٠–٣٤٢ ق.م', dynasty:'الْأُسْرَةُ الثَّلَاثُون',         capital:'صَبَنِّيطُوس',
+    desc:'آخِرُ فِرْعَوْنٍ مِنَ الدَّمِ الْمِصْرِيِّ الْخَالِص. فَرَّ أَمَامَ الْغَزْوِ الْفَارِسِيِّ لِيُطَوِّيَ صَفْحَةَ الْحُكَّامِ الْمِصْرِيِّين.',
+    overview:'نَخْتَنَبُو الثَّانِي آخِرُ فِرْعَوْنٍ مِصْرِيِّ الْأَصْلِ. لَمْ يَسْتَطِعِ الصُّمُودَ أَمَامَ الْجُيُوشِ الْفَارِسِيَّةِ فَفَرَّ جَنُوبًا.',
+    achievements:'شَيَّدَ عَدَدًا مِنَ الْمَعَابِدِ وَالْمَنْشَآتِ الدِّينِيَّة. قَاوَمَ الْفُرْسَ لِفَتَرَاتٍ مُتَعَدِّدَة.',
+    legacy:'بَعْدَ فِرَارِهِ لَمْ يَحْكُمِ مِصْرَ فِرْعَوْنٌ مِصْرِيُّ الدَّمِ حَتَّى الْيَوْم. يُمَثِّلُ نِهَايَةَ الْحُكْمِ الْمِصْرِيِّ الْمُسْتَقِلّ.',
+    tags:['آخِرُ الْفَرَاعِنَةِ الْمِصْرِيِّين','الْغَزْوُ الْفَارِسِيّ','الْأُسْرَةُ الثَّلَاثُون','بَانِي الْمَعَابِد'] },
+
+  { id:11, name:'بَطَلَيْمُوسُ الْأَوَّل', latin:'Ptolemy I Soter',            era:'ptolemaic',  badge:'badge-ptol',  eraName:'الْعَصْرُ الْبَطَلَمِيّ',    reign:'٣٠٥–٢٨٣ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة',     capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'مُؤَسِّسُ الْأُسْرَةِ الْبَطَلَمِيَّةِ وَأَحَدُ قَادَةِ الْإِسْكَنْدَرِ الْأَكْبَر. أَسَّسَ مَكْتَبَةَ الْإِسْكَنْدَرِيَّة.',
+    overview:'كَانَ أَحَدَ أَقْرَبِ قَادَةِ الْإِسْكَنْدَرِ الْمَقْدُونِيِّ. بَعْدَ وَفَاتِهِ حَكَمَ مِصْرَ وَأَسَّسَ سُلَالَةً دَامَتْ ثَلَاثَةَ قُرُون.',
+    achievements:'أَسَّسَ مَكْتَبَةَ الْإِسْكَنْدَرِيَّةِ وَمُتْحَفَ الْمُوسِيُون. جَعَلَ الْإِسْكَنْدَرِيَّةَ مِنْ أَعْظَمِ مُدُنِ الْعَالَم.',
+    legacy:'مَكْتَبَةُ الْإِسْكَنْدَرِيَّةِ رَمْزٌ خَالِدٌ لِلْمَعْرِفَةِ الْإِنْسَانِيَّة. الْإِسْكَنْدَرِيَّةُ لَا تَزَالُ تَحْمِلُ أَثَرَهُ.',
+    tags:['مَكْتَبَةُ الْإِسْكَنْدَرِيَّة','الْأُسْرَةُ الْبَطَلَمِيَّة','قَائِدُ الْإِسْكَنْدَر','الْإِسْكَنْدَرِيَّة'] },
+
+  { id:12, name:'كْلِيُوبَاتْرَا السَّابِعَة', latin:'Cleopatra VII',         era:'ptolemaic',  badge:'badge-ptol',  eraName:'الْعَصْرُ الْبَطَلَمِيّ',    reign:'٥١–٣٠ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة',       capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'آخِرُ مُلُوكِ الْبَطَالِمَة، أَشْهَرُ مَلِكَاتِ التَّارِيخ، تُتْقِنُ تِسْعَ لُغَاتٍ.',
+    overview:'كَانَتْ تُتْقِنُ تِسْعَ لُغَاتٍ وَهِيَ الْمَلِكَةُ الْوَحِيدَةُ الَّتِي تَعَلَّمَتِ اللُّغَةَ الْمِصْرِيَّة. عَبْقَرِيَّةٌ دِبْلُومَاسِيَّةٌ فَائِقَة.',
+    achievements:'أَقَامَتْ تَحَالُفَاتٍ مَعَ يُولْيُوسَ قَيْصَرَ وَمَارْكَ أَنْطُونِيُوس. كَافَحَتْ لِلْحِفَاظِ عَلَى اسْتِقْلَالِيَّةِ مِصْر.',
+    legacy:'بِانْتِحَارِهَا عَامَ ثَلَاثِينَ قَبْلَ الْمِيلَادِ انْتَهَتِ الْحَضَارَةُ الْفِرْعَوْنِيَّة. تَظَلُّ رَمْزًا لِلذَّكَاءِ وَالسُّلْطَة.',
+    tags:['آخِرُ الْفَرَاعِنَة','يُولْيُوسُ قَيْصَر','تِسْعُ لُغَات','مَارْكُ أَنْطُونِيُوس'] },
+
+  { id:13, name:'سَنَفَرُو',              latin:'Sneferu',                    era:'old',        badge:'badge-old',   eraName:'الدَّوْلَةُ الْقَدِيمَة',    reign:'٢٦١٣–٢٥٨٩ ق.م', dynasty:'الْأُسْرَةُ الرَّابِعَة',       capital:'مَنْف',
+    desc:'مُؤَسِّسُ الْأُسْرَةِ الرَّابِعَةِ وَأَكْبَرُ بُنَاةِ الْأَهْرَامَات. شَيَّدَ الْهَرَمَ الْمُنْحَنِيَ وَالْهَرَمَ الْأَحْمَر.',
+    overview:'وَالِدُ خُوفُو أَعْظَمُ بَانِي فِي التَّارِيخ. شَيَّدَ ثَلَاثَةَ أَهْرَامَاتٍ ضَخْمَةً فِي دَهْشُورَ وَمَيْدُوم.',
+    achievements:'شَيَّدَ الْهَرَمَ الْمُنْحَنِيَ وَالْهَرَمَ الْأَحْمَرَ. طَوَّرَ أُسْلُوبَ الْبِنَاءِ الَّذِي اتَّبَعَهُ ابْنُهُ خُوفُو.',
+    legacy:'مَعَهُ بَدَأَتِ الْعِمَارَةُ الْهَرَمِيَّةُ الْكَلَاسِيكِيَّة. تَجَارِبُهُ مَهَّدَتِ الطَّرِيقَ لِعَصْرِ الْأَهْرَامَاتِ الذَّهَبِيّ.',
+    tags:['الْهَرَمُ الْمُنْحَنِي','الْهَرَمُ الْأَحْمَر','الْأُسْرَةُ الرَّابِعَة','أَكْبَرُ بُنَاةِ الْأَهْرَامَات'] },
+
+  { id:14, name:'أَمِنْحُوتِبُ الثَّالِث', latin:'Amenhotep III',             era:'new',        badge:'badge-new',   eraName:'الدَّوْلَةُ الْحَدِيثَة',    reign:'١٣٨٨–١٣٥١ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'مَلِكُ الذَّهَبِ وَالْبِنَاء. حَكَمَ فِي ذِرْوَةِ رَخَاءِ مِصْرَ وَخَلَّفَ تِمْثَالَيْ مِمْنُون.',
+    overview:'جَدُّ تُوتٍ عَنْخِ آمُون حَكَمَ فِي الْعَصْرِ الذَّهَبِيِّ الْحَقِيقِيّ. الْمَمْلَكَةُ فِي عَهْدِهِ كَانَتْ تَحْظَى بِالسَّلَامِ وَالسِّيَادَة.',
+    achievements:'بَنَى تِمْثَالَيْ مِمْنُونَ الْعِمْلَاقَيْن. شَيَّدَ الْجُزْءَ الْأَكْبَرَ مِنْ مَعْبَدِ الْأُقْصُر. أَرْسَلَ بَعَثَاتٍ دِبْلُومَاسِيَّةً لِلْعَالَم.',
+    legacy:'عَصْرُهُ مِنْ أَكْثَرِ الْعُصُورِ إِشْرَاقًا وَجَمَالًا. الْفُنُونُ وَالْعِمَارَةُ بَلَغَتْ ذِرْوَتَهَا فِي عَهْدِه.',
+    tags:['تِمْثَالَا مِمْنُون','مَعْبَدُ الْأُقْصُر','الْعَصْرُ الذَّهَبِيّ','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة'] },
+
+  { id:15, name:'مِنْتُوحُوتِبُ الثَّانِي', latin:'Mentuhotep II',            era:'middle',     badge:'badge-middle', eraName:'الدَّوْلَةُ الْوُسْطَى',    reign:'٢٠٥٥–٢٠٠٤ ق.م', dynasty:'الْأُسْرَةُ الْحَادِيَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'مُوَحِّدُ مِصْرَ الثَّانِي. أَعَادَ لَمَّ الشَّتَاتِ بَعْدَ عَصْرِ الِانْتِقَالِ وَأَسَّسَ الدَّوْلَةَ الْوُسْطَى.',
+    overview:'أَحَدُ أَعْظَمِ فَرَاعِنَةِ مِصْر. بَعْدَ الْحُرُوبِ الْأَهْلِيَّةِ نَجَحَ فِي تَوْحِيدِ مِصْرَ تَحْتَ سُلْطَةِ طِيبَة.',
+    achievements:'وَحَّدَ مِصْرَ بَعْدَ الِانْهِيَار. حَكَمَ لِأَكْثَرَ مِنْ خَمْسِينَ عَامًا. مَعْبَدُهُ فِي الدَّيْرِ الْبَحْرِيِّ أَسْبَقُ مِنْ مَعْبَدِ حَتْشِبْسُوت.',
+    legacy:'يُمَثِّلُ الصُّمُودَ وَإِعَادَةَ الْبِنَاءِ. الدَّوْلَةُ الْوُسْطَى كَانَتْ عَصْرَ ازْدِهَارٍ أَدَبِيٍّ وَفَنِّيّ.',
+    tags:['تَوْحِيدُ مِصْر','الدَّوْلَةُ الْوُسْطَى','الدَّيْرُ الْبَحْرِيّ','الْأُسْرَةُ الْحَادِيَةَ عَشَرَة'] },
+
+  { id:16, name:'تُحُتْمِسُ الْأَوَّل',   latin:'Thutmose I',                 era:'new',        badge:'badge-new',   eraName:'الدَّوْلَةُ الْحَدِيثَة',    reign:'١٥٠٦–١٤٩٣ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'أَوَّلُ فِرْعَوْنٍ يُدْفَنُ فِي وَادِي الْمُلُوك. مَدَّ حُدُودَ مِصْرَ حَتَّى الْفُرَاتِ شَمَالًا.',
+    overview:'وَالِدُ حَتْشِبْسُوتَ مِنْ أَشْجَعِ فَرَاعِنَةِ الدَّوْلَةِ الْحَدِيثَة. وَصَلَ بِجَيْشِهِ الْفُرَاتَ ثُمَّ الشَّلَّالَ الرَّابِع.',
+    achievements:'أَسَّسَ وَادِيَ الْمُلُوكِ مَقْبَرَةً مَلَكِيَّة. وَسَّعَ حُدُودَ مِصْرَ إِلَى أَوْسَعِ مَدَاهَا. نَقَشَ مَنَاظِرَ رَائِعَةً فِي الْكَرْنَك.',
+    legacy:'نَمَطُ الدَّفْنِ فِي وَادِي الْمُلُوكِ الَّذِي اتَّبَعَهُ أَثَّرَ فِي كُلِّ مَنْ جَاءَ بَعْدَه.',
+    tags:['وَادِي الْمُلُوك','نَهْرُ الْفُرَات','السُّودَان','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة'] },
+
+  // ─── الدولة القديمة — إضافية ───
+  { id:17, name:'زوسر', latin:'Djoser', era:'old', badge:'badge-old', eraName:'الدَّوْلَةُ الْقَدِيمَة', reign:'٢٦٥٠–٢٥٧٥ ق.م', dynasty:'الْأُسْرَةُ الثَّالِثَة', capital:'مَنْف',
+    desc:'صَاحِبُ الْهَرَمِ الْمُدَرَّج، أَوَّلُ هَرَمٍ حَجَرِيٍّ فِي التَّارِيخ. خَدَمَهُ الْعَبْقَرِيُّ إِمْحُوتِب.',
+    overview:'زوسر مُؤَسِّسُ الْأُسْرَةِ الثَّالِثَة بَنَى أَوَّلَ هَرَمٍ حَجَرِيٍّ فِي التَّارِيخِ بِسَقَّارَة. مُهَنْدِسُهُ إِمْحُوتِب أَوَّلُ عَبْقَرِيٍّ مَعْرُوفٌ بِالِاسْمِ فِي التَّارِيخِ الْإِنْسَانِيِّ كُلِّه.',
+    achievements:'بِنَاءُ الْهَرَمِ الْمُدَرَّجِ فِي سَقَّارَة. تَطْوِيرُ الْبِنَاءِ الْحَجَرِيِّ بَدَلًا مِنَ اللَّبِن. تَوْسِيعُ حُدُودِ مِصْرَ جَنُوبًا.',
+    legacy:'الْهَرَمُ الْمُدَرَّجُ نُقْطَةُ تَحَوُّلٍ فِي تَارِيخِ الْعِمَارَةِ الْإِنْسَانِيَّة. إِمْحُوتِب مُسْتَشَارُهُ أَصْبَحَ إِلَهًا لِلطِّبِّ لَاحِقًا.',
+    tags:['الْهَرَمُ الْمُدَرَّج','إِمْحُوتِب','سَقَّارَة','الْأُسْرَةُ الثَّالِثَة'] },
+
+  { id:18, name:'خَفْرَع', latin:'Khafre', era:'old', badge:'badge-old', eraName:'الدَّوْلَةُ الْقَدِيمَة', reign:'٢٥٥٨–٢٥٣٢ ق.م', dynasty:'الْأُسْرَةُ الرَّابِعَة', capital:'مَنْف',
+    desc:'بَانِي الْهَرَمِ الثَّانِي بِالْجِيزَة وَأَبُو الْهَوْل الشَّهِير. ابْنُ خُوفُو الْعَظِيم.',
+    overview:'خَفْرَع ابْنُ خُوفُو بَنَى الْهَرَمَ الثَّانِيَ بِالْجِيزَة الَّذِي يَبْدُو أَطْوَلَ مِنَ الْأَكْبَرِ بِسَبَبِ مَوْقِعِه. كَمَا أَمَرَ بِنَحْتِ تِمْثَالِ أَبِي الْهَوْلِ الْعَمْلَاقِ حَارِسًا لِمَجْمَعِ الْأَهْرَامَات.',
+    achievements:'بِنَاءُ الْهَرَمِ الثَّانِي بِالْجِيزَة. نَحْتُ أَبِي الْهَوْل مِنَ الْحَجَرِ الطَّبِيعِيّ. إِنْشَاءُ مَعْبَدِ الْوَادِي.',
+    legacy:'أَبُو الْهَوْل أَشْهَرُ تِمْثَالٍ فِي تَارِيخِ الْبَشَرِيَّة. مَجْمَعُ الْجِيزَةُ الَّذِي اكْتَمَلَ فِي عَهْدِهِ مَزَارٌ عَالَمِيٌّ لَا مِثِيلَ لَه.',
+    tags:['الْهَرَمُ الثَّانِي','أَبُو الْهَوْل','الْجِيزَة','الْأُسْرَةُ الرَّابِعَة'] },
+
+  { id:19, name:'مَنْقَرَع', latin:'Menkaure', era:'old', badge:'badge-old', eraName:'الدَّوْلَةُ الْقَدِيمَة', reign:'٢٥٣٢–٢٥٠٣ ق.م', dynasty:'الْأُسْرَةُ الرَّابِعَة', capital:'مَنْف',
+    desc:'بَانِي الْهَرَمِ الثَّالِثِ بِالْجِيزَة، اشْتُهِرَ بِعَدَالَتِهِ وَرِفْقِهِ بِالرَّعِيَّة.',
+    overview:'مَنْقَرَع حَفِيدُ خُوفُو بَنَى الْهَرَمَ الثَّالِثَ بِالْجِيزَة. رَغْمَ صِغَرِ حَجْمِهِ فَإِنَّ تَشْطِيبَهُ بِالْغْرَانِيتِ الْأَسْوَانِيِّ يَجْعَلُهُ مِنْ أَجْمَلِ الْأَهْرَامَات. اشْتُهِرَ فِي الرِّوَايَاتِ الْقَدِيمَةِ بِالرَّحْمَةِ وَالْعَدَالَة.',
+    achievements:'بِنَاءُ الْهَرَمِ الثَّالِثِ بِالْغْرَانِيتِ الْأَسْوَانِيّ. إِصْلَاحَاتٌ اجْتِمَاعِيَّةٌ وَتَخْفِيفُ الضَّرَائِب.',
+    legacy:'يُضْرَبُ بِعَدَالَتِهِ الْمَثَلُ فِي الرِّوَايَاتِ الْإِغْرِيقِيَّة. هَرَمُهُ يُكْمِلُ ثُلَاثِيَّةَ الْجِيزَةِ الْخَالِدَة.',
+    tags:['الْهَرَمُ الثَّالِث','الْجِيزَة','الْغْرَانِيت','الْأُسْرَةُ الرَّابِعَة'] },
+
+  { id:20, name:'بيبي الثاني', latin:'Pepi II', era:'old', badge:'badge-old', eraName:'الدَّوْلَةُ الْقَدِيمَة', reign:'٢٢٧٨–٢١٨٤ ق.م', dynasty:'الْأُسْرَةُ السَّادِسَة', capital:'مَنْف',
+    desc:'أَطْوَلُ فَتَرَاتِ الْحُكْمِ فِي التَّارِيخِ، حَكَمَ مِصْرَ أَكْثَرَ مِنْ تِسْعِينَ عَامًا.',
+    overview:'بيبي الثاني تَوَلَّى الْعَرْشَ وَهُوَ طِفْلٌ فِي السَّادِسَةِ مِنْ عُمْرِهِ وَحَكَمَ نَحْوَ أَرْبَعَةٍ وَتِسْعِينَ عَامًا، وَهِيَ أَطْوَلُ فَتْرَةِ حُكْمٍ مُؤَكَّدَةٍ فِي التَّارِيخِ الْبَشَرِيِّ كُلِّه.',
+    achievements:'أَطْوَلُ حُكْمٍ فِي التَّارِيخِ الْمُؤَكَّد. بَعَثَاتٌ تِجَارِيَّةٌ إِلَى بُونْت وَالنُّوبَة. بِنَاءُ هَرَمِهِ فِي سَقَّارَة.',
+    legacy:'يُجْسِّدُ بيبي الثاني رَمْزَ الِاسْتِمْرَارِيَّةِ لَكِنَّ حُكْمَهُ الطَّوِيلَ أَفْضَى إِلَى إِضْعَافِ الدَّوْلَةِ وَانْهِيَارِ الدَّوْلَةِ الْقَدِيمَة.',
+    tags:['أَطْوَلُ حُكْمٍ','تِسْعُونَ عَامًا','الْأُسْرَةُ السَّادِسَة','بُونْت'] },
+
+  // ─── الدولة الوسطى — إضافية ───
+  { id:21, name:'أَمِنِمْحَات الأول', latin:'Amenemhat I', era:'middle', badge:'badge-middle', eraName:'الدَّوْلَةُ الْوُسْطَى', reign:'١٩٩١–١٩٦٢ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةَ عَشَرَة', capital:'إِتْجَتَاوِي',
+    desc:'مُؤَسِّسُ الْأُسْرَةِ الثَّانِيَةَ عَشَرَة وَمُعِيدُ الِاسْتِقْرَارِ لِمِصْر. شَاعِرٌ وَمُصْلِحٌ كَبِير.',
+    overview:'أَمِنِمْحَات الأول أَسَّسَ الْأُسْرَةَ الثَّانِيَةَ عَشَرَةَ بَعْدَ فَوْضَى عَصْرِ الِانْتِقَالِ الثَّانِي. نَقَلَ الْعَاصِمَةَ إِلَى إِتْجَتَاوِي وَأَعَادَ تَنْظِيمَ الدَّوْلَة.',
+    achievements:'تَأْسِيسُ الْأُسْرَةِ الثَّانِيَةَ عَشَرَة. نَقَلَ الْعَاصِمَةَ. إِصْلَاحَاتٌ إِدَارِيَّةٌ شَامِلَة. كَتَبَ «تَعَالِيمَ أَمِنِمْحَات» الشَّهِيرَة.',
+    legacy:'أَرْسَى دَعَائِمَ الدَّوْلَةِ الْوُسْطَى الَّتِي شَهِدَتْ ازْدِهَارًا أَدَبِيًّا وَفَنِّيًّا. تَعَالِيمُهُ مِنْ أَبْرَزِ النُّصُوصِ الْأَدَبِيَّةِ الْمِصْرِيَّة.',
+    tags:['الْأُسْرَةُ الثَّانِيَةَ عَشَرَة','إِتْجَتَاوِي','الْأَدَبُ الْمِصْرِيّ','الدَّوْلَةُ الْوُسْطَى'] },
+
+  { id:22, name:'سنوسرت الثالث', latin:'Senusret III', era:'middle', badge:'badge-middle', eraName:'الدَّوْلَةُ الْوُسْطَى', reign:'١٨٧٨–١٨٣٩ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةَ عَشَرَة', capital:'إِتْجَتَاوِي',
+    desc:'أَعْظَمُ فَرَاعِنَةِ الدَّوْلَةِ الْوُسْطَى. فَاتِحُ النُّوبَةِ وَبَانِي الْحُصُونِ الضَّخْمَة.',
+    overview:'سنوسرت الثالث أَعْظَمُ مُلُوكِ الدَّوْلَةِ الْوُسْطَى. حَارَبَ فِي النُّوبَةِ وَبَنَى سِلْسِلَةً مِنَ الْحُصُونِ الضَّخْمَةِ لِتَأْمِينِ الْحُدُودِ الْجَنُوبِيَّة.',
+    achievements:'فَتْحُ النُّوبَةِ وَإِنْشَاءُ حُصُونِ الشَّلَّالِ الثَّانِي. إِصْلَاحَاتٌ إِدَارِيَّةٌ جَذْرِيَّة. بِنَاءُ هَرَمِهِ فِي دَهْشُور.',
+    legacy:'أَصْبَحَ إِلَهًا يُعْبَدُ فِي النُّوبَة. يُعْتَقَدُ أَنَّ أُسْطُورَةَ الْمَلِكِ سيزوستريس الْإِغْرِيقِيَّةِ مُسْتَوْحَاةٌ مِنْه.',
+    tags:['فَتْحُ النُّوبَة','حُصُونُ الشَّلَّال','الدَّوْلَةُ الْوُسْطَى','الْإِصْلَاحَاتُ الْإِدَارِيَّة'] },
+
+  { id:23, name:'أَمِنِمْحَات الثالث', latin:'Amenemhat III', era:'middle', badge:'badge-middle', eraName:'الدَّوْلَةُ الْوُسْطَى', reign:'١٨٦٠–١٨١٤ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةَ عَشَرَة', capital:'إِتْجَتَاوِي',
+    desc:'مَلِكُ الْبِنَاءِ وَالتَّعْدِين. بَنَى الْمَتَاهَةَ الشَّهِيرَةَ وَاسْتَثْمَرَ سِينَاءَ لِلنُّحَاس.',
+    overview:'أَمِنِمْحَات الثالث حَكَمَ طَوِيلًا فِي عَصْرٍ ازْدَهَرَتْ فِيهِ مِصْر. بَنَى «الْمَتَاهَةَ» الَّتِي وَصَفَهَا الرَّحَّالَةُ الْإِغْرِيقُ بِأَنَّهَا أَعْجَبُ مِنَ الْأَهْرَامَات.',
+    achievements:'بِنَاءُ الْمَتَاهَةِ بِالْفَيُّوم. اسْتِثْمَارُ مَنَاجِمِ سِينَاء. إِصْلَاحُ الرِّيِّ وَزِيَادَةُ الرِّقْعَةِ الزِّرَاعِيَّة.',
+    legacy:'الْمَتَاهَةُ الَّتِي بَنَاهَا أَعْجَبَتِ الْإِغْرِيقَ أَكْثَرَ مِنَ الْأَهْرَامَات. عَصْرُهُ يُمَثِّلُ ذِرْوَةَ الدَّوْلَةِ الْوُسْطَى.',
+    tags:['الْمَتَاهَة','الْفَيُّوم','مَنَاجِمُ سِينَاء','الدَّوْلَةُ الْوُسْطَى'] },
+
+  // ─── الدولة الحديثة — إضافية ───
+  { id:24, name:'أَحْمَسُ الأول', latin:'Ahmose I', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٥٥٠–١٥٢٥ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'مُحَرِّرُ مِصْرَ مِنَ الْهِكْسُوس وَمُؤَسِّسُ الدَّوْلَةِ الْحَدِيثَة. بَطَلٌ قَوْمِيٌّ خَالِد.',
+    overview:'أَحْمَسُ الأول طَرَدَ الْهِكْسُوسَ الْغُزَاةَ مِنْ مِصْرَ بَعْدَ أَكْثَرَ مِنْ مِائَةٍ وَخَمْسِينَ عَامًا مِنَ الِاحْتِلَال. أَسَّسَ الْأُسْرَةَ الثَّامِنَةَ عَشَرَةَ وَعَصْرَ الدَّوْلَةِ الْحَدِيثَة.',
+    achievements:'طَرْدُ الْهِكْسُوسِ وَتَحْرِيرُ مِصْر. تَأْسِيسُ الدَّوْلَةِ الْحَدِيثَة. إِعَادَةُ بِنَاءِ الدَّوْلَةِ وَجَيْشِهَا.',
+    legacy:'يُعَدُّ مِنْ أَعْظَمِ الْأَبْطَالِ الْقَوْمِيِّينَ فِي التَّارِيخِ الْمِصْرِيّ. عَصْرُهُ بِدَايَةُ أُزْهَى فَتَرَاتِ مِصْر.',
+    tags:['طَرْدُ الْهِكْسُوس','الدَّوْلَةُ الْحَدِيثَة','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة','الْبَطَلُ الْقَوْمِيّ'] },
+
+  { id:25, name:'تُحُتْمِسُ الثَّانِي', latin:'Thutmose II', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٤٩٣–١٤٧٩ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'زَوْجُ حَتْشِبْسُوت وَوَالِدُ تُحُتْمِسَ الثَّالِث. حَكَمَ فِي ظِلِّ زَوْجَتِهِ الْقَوِيَّة.',
+    overview:'تُحُتْمِسُ الثَّانِي زَوْجُ حَتْشِبْسُوت وَوَالِدُ تُحُتْمِسَ الثَّالِث. حُكْمُهُ كَانَ مَحْدُودًا نِسْبِيًّا وَكَانَتْ حَتْشِبْسُوت تُمَارِسُ نُفُوذًا وَاسِعًا.',
+    achievements:'شَنَّ حَمْلَةً عَلَى النُّوبَة. قَمَعَ تَمَرُّدًا فِي فِلَسْطِين. أَنْجَبَ تُحُتْمِسَ الثَّالِث مِنْ إِحْدَى زَوْجَاتِهِ الثَّانَوِيَّات.',
+    legacy:'أَهَمِّيَّتُهُ تَكْمُنُ فِي كَوْنِهِ حَلَقَةَ الْوَصْلِ بَيْنَ تُحُتْمِسَ الأول وَأَعْظَمِ فَرَاعِنَةِ الدَّوْلَةِ الْحَدِيثَة.',
+    tags:['الْأُسْرَةُ الثَّامِنَةَ عَشَرَة','زَوْجُ حَتْشِبْسُوت','وَالِدُ تُحُتْمِسَ الثَّالِث','الدَّوْلَةُ الْحَدِيثَة'] },
+
+  { id:26, name:'أَمِنْحُوتِبُ الأول', latin:'Amenhotep I', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٥٢٥–١٥٠٦ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'ابْنُ أَحْمَسَ الأول وَثَانِي مُلُوكِ الدَّوْلَةِ الْحَدِيثَة. مَعْبُودٌ بَعْدَ وَفَاتِهِ فِي دير المدينة.',
+    overview:'أَمِنْحُوتِبُ الأول ابْنُ مُحَرِّرِ مِصْر أَحْمَسَ. حَكَمَ مِصْرَ فِي اسْتِقْرَارٍ وَأَجْرَى حَمَلَاتٍ فِي النُّوبَة. بَعْدَ وَفَاتِهِ أَصْبَحَ مَعْبُودَ عُمَّالِ دير المدينة.',
+    achievements:'حَمَلَاتٌ فِي النُّوبَةِ وَلِيبِيَا. تَوْسِيعُ مَعَابِدِ الْكَرْنَك. وَضَعَ أُسُسَ مَقْبَرَةِ دير المدينة.',
+    legacy:'تَأْلِيهُهُ بَعْدَ الْوَفَاةِ نَادِرٌ فِي التَّارِيخِ الْفِرْعَوْنِيّ. عُمَّالُ بِنَاءِ الْمَقَابِرِ عَبَدُوهُ قَرْنًا بَعْدَ وَفَاتِه.',
+    tags:['دير المدينة','التَّأْلِيه','النُّوبَة','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة'] },
+
+  { id:27, name:'أَمِنْحُوتِبُ الثَّانِي', latin:'Amenhotep II', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٤٢٧–١٤٠١ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'الْفَرَاسُ الْأَسْطُورِيّ. اشْتُهِرَ بِقُوَّتِهِ الْجِسْمَانِيَّةِ الْخَارِقَةِ وَبَرَاعَتِهِ فِي الرِّمَايَة.',
+    overview:'أَمِنْحُوتِبُ الثَّانِي ابْنُ تُحُتْمِسَ الثَّالِث وَرِثَ إِمْبِرَاطُورِيَّةً ضَخْمَة. اشْتُهِرَ بِقُوَّةٍ جِسْمَانِيَّةٍ أُسْطُورِيَّةٍ وَكَانَ رَامِيًا وَسَبَّاحًا وَفَارِسَ خَيْلٍ لَا مَثِيلَ لَه.',
+    achievements:'شَنَّ حَمَلَاتٍ فِي سُورِيَّا وَفِلَسْطِين. أَبْقَى عَلَى الْإِمْبِرَاطُورِيَّة. بَنَى مَعَابِدَ مُتَعَدِّدَة.',
+    legacy:'نُصُوصُ بَطُولَاتِهِ الرِّيَاضِيَّةِ مِنْ أَقْدَمِ الْوَثَائِقِ الَّتِي تُمَجِّدُ الْبُطُولَةَ الْجِسْدِيَّة.',
+    tags:['الْفَارِسُ الْأَسْطُورِيّ','الرِّمَايَة','الْإِمْبِرَاطُورِيَّة','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة'] },
+
+  { id:28, name:'تُحُتْمِسُ الرَّابِع', latin:'Thutmose IV', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٤٠١–١٣٩١ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'مُكَشِّفُ أَبِي الْهَوْلِ مِنَ الرِّمَال وَصَاحِبُ لَوْحَةِ الرُّؤْيَا الشَّهِيرَة.',
+    overview:'تُحُتْمِسُ الرَّابِع مَشْهُورٌ بِأُسْطُورَةِ كَشْفِ أَبِي الْهَوْل. قَبْلَ اعْتِلَائِهِ الْعَرْشَ رَأَى رُؤْيَا طَلَبَ مِنْهُ فِيهَا أَبُو الْهَوْلُ أَنْ يُنَقِّيَهُ مِنَ الرِّمَال.',
+    achievements:'كَشْفُ أَبِي الْهَوْلِ مِنَ الرِّمَال. نَصْبُ لَوْحَةِ الْحُلْم. دِبْلُومَاسِيَّةٌ مَعَ مِيتَانِي.',
+    legacy:'لَوْحَةُ الرُّؤْيَا بَيْنَ قَدَمَيْ أَبِي الْهَوْلِ مَصْدَرٌ تَارِيخِيٌّ لَا يُقَدَّر. اهْتِمَامُهُ بِأَبِي الْهَوْلِ أَنْقَذَ هَذَا الْأَثَرَ الْعَظِيم.',
+    tags:['أَبُو الْهَوْل','لَوْحَةُ الرُّؤْيَا','الْكَشْفُ مِنَ الرِّمَال','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة'] },
+
+  { id:29, name:'حُورِمْحِب', latin:'Horemheb', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٣١٩–١٢٩٢ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'مَنْف',
+    desc:'الْقَائِدُ الَّذِي أَصْبَحَ مَلِكًا. أَعَادَ النِّظَامَ لِمِصْرَ بَعْدَ فَوْضَى عَصْرِ عَمَارِنَة.',
+    overview:'حُورِمْحِب كَانَ قَائِدًا عَسْكَرِيًّا قَبْلَ أَنْ يُصْبِحَ مَلِكًا. أَعَادَ النِّظَامَ لِمِصْرَ بَعْدَ اضْطِرَابَاتِ عَصْرِ أَخْنَاتُون وَمَحَا آثَارَ الثَّوْرَةِ الدِّينِيَّة.',
+    achievements:'إِعَادَةُ النِّظَامِ الْإِدَارِيّ. مَحْوُ آثَارِ عَصْرِ عَمَارِنَة. إِصْلَاحَاتٌ قَانُونِيَّة. اخْتَارَ رَمْسِيسَ الأول خَلِيفَةً لَه.',
+    legacy:'جَسَّدَ حُورِمْحِب نَمُوذَجَ الرَّجُلِ الَّذِي صَنَعَ نَفْسَه. إِصْلَاحَاتُهُ مَهَّدَتْ لِعَصْرِ الرَّعَامِسَة.',
+    tags:['إِعَادَةُ النِّظَام','الْإِصْلَاحَاتُ الْقَانُونِيَّة','مَحْوُ عَمَارِنَة','الرَّعَامِسَة'] },
+
+  { id:30, name:'رَمْسِيسُ الثَّالِث', latin:'Ramesses III', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١١٨٦–١١٥٥ ق.م', dynasty:'الْأُسْرَةُ الْعِشْرُون', capital:'بِيـ-رَمْسِيس',
+    desc:'آخِرُ الْفَرَاعِنَةِ الْعِظَام. هَزَمَ شُعُوبَ الْبَحْرِ وَأَنْقَذَ مِصْرَ مِنَ الْغَزْو.',
+    overview:'رَمْسِيسُ الثَّالِث آخِرُ الْفَرَاعِنَةِ الْعِظَام. هَزَمَ هُجُومَ شُعُوبِ الْبَحْرِ الْكَارِثِيَّ الَّذِي أَسْقَطَ كُلَّ حَضَارَاتِ الشَّرْقِ الْأَوْسَطِ تَقْرِيبًا مَا عَدَا مِصْر.',
+    achievements:'هَزِيمَةُ شُعُوبِ الْبَحْر. إِنْقَاذُ مِصْرَ مِنَ الِانْهِيَار. بِنَاءُ مَعْبَدِ مَدِينَةِ هَابُو الرَّائِع.',
+    legacy:'مَعْرَكَتُهُ ضِدَّ شُعُوبِ الْبَحْرِ مِنْ أَعْظَمِ الْمَعَارِكِ الدِّفَاعِيَّةِ فِي التَّارِيخ. مَدِينَةُ هَابُو تَحْفَةٌ مِعْمَارِيَّةٌ خَالِدَة.',
+    tags:['شُعُوبُ الْبَحْر','مَدِينَةُ هَابُو','آخِرُ الْعِظَام','الْأُسْرَةُ الْعِشْرُون'] },
+
+  { id:31, name:'رَمْسِيسُ الرَّابِع', latin:'Ramesses IV', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١١٥٥–١١٤٩ ق.م', dynasty:'الْأُسْرَةُ الْعِشْرُون', capital:'بِيـ-رَمْسِيس',
+    desc:'ابْنُ رَمْسِيسَ الثَّالِث. أَرْسَلَ حَمَلَاتٍ تَعْدِينِيَّةً ضَخْمَةً وَتَحَدَّى الصُّعُوبَات.',
+    overview:'رَمْسِيسُ الرَّابِع وَرِثَ مِصْرَ فِي بِدَايَةِ الِانْحِدَار. أَرْسَلَ أَكْبَرَ حَمَلَةٍ تَعْدِينِيَّةٍ مَعْرُوفَةٍ فِي التَّارِيخِ إِلَى وَادِي الْحَمَّامَات.',
+    achievements:'أَكْبَرُ حَمَلَةٍ تَعْدِينِيَّةٍ مَعْرُوفَة. بَرَدِيَّاتٌ مُهِمَّةٌ مِنْ عَهْدِه. بِنَاءُ مَعَابِدَ مُتَعَدِّدَة.',
+    legacy:'بَرَدِيَّاتُ عَهْدِهِ تُوَثِّقُ أَضْخَمَ عَمَلِيَّةِ بِنَاءٍ مَعْرُوفَةٍ فِي مِصْرَ الْقَدِيمَة.',
+    tags:['حَمَلَةُ التَّعْدِين','وَادِي الْحَمَّامَات','الْأُسْرَةُ الْعِشْرُون','الِانْحِدَار'] },
+
+  { id:32, name:'مِيرِنْبَتَاح', latin:'Merenptah', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٢١٣–١٢٠٣ ق.م', dynasty:'الْأُسْرَةُ التَّاسِعَةَ عَشَرَة', capital:'مَنْف',
+    desc:'ابْنُ رَمْسِيسَ الثَّانِي وَصَاحِبُ أَقْدَمِ ذِكْرٍ لِاسْمِ «إِسْرَائِيل» فِي التَّارِيخ.',
+    overview:'مِيرِنْبَتَاح ابْنُ رَمْسِيسَ الثَّانِي تَوَلَّى الْعَرْشَ فِي سِنٍّ مُتَقَدِّمَة. لَوْحَتُهُ الشَّهِيرَةُ تَحْوِي أَقْدَمَ ذِكْرٍ لِاسْمِ «إِسْرَائِيل» خَارِجَ الْكِتَابِ الْمُقَدَّس.',
+    achievements:'هَزِيمَةُ لِيبِيَا وَشُعُوبِ الْبَحْر. لَوْحَةُ مِيرِنْبَتَاح الشَّهِيرَة.',
+    legacy:'لَوْحَتُهُ مِنْ أَهَمِّ الْوَثَائِقِ التَّارِيخِيَّةِ لِفَهْمِ تَارِيخِ الشَّرْقِ الْأَوْسَطِ الْقَدِيم.',
+    tags:['لَوْحَةُ مِيرِنْبَتَاح','أَقْدَمُ ذِكْرٍ لِإِسْرَائِيل','هَزِيمَةُ لِيبِيَا','الْأُسْرَةُ التَّاسِعَةَ عَشَرَة'] },
+
+  // ─── عصر الانتقال الثالث ───
+  { id:33, name:'شَيشَنق الأول', latin:'Shoshenq I', era:'late', badge:'badge-late', eraName:'الْعَصْرُ الْمُتَأَخِّر', reign:'٩٤٥–٩٢٤ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةُ وَالْعِشْرُون', capital:'بُوبَاسْتِس',
+    desc:'مُؤَسِّسُ الْأُسْرَةِ اللِّيبِيَّةِ وَغَازِي فِلَسْطِين الْمَذْكُورُ فِي الْكِتَابِ الْمُقَدَّس.',
+    overview:'شَيشَنق الأول مُؤَسِّسُ الْأُسْرَةِ الثَّانِيَةِ وَالْعِشْرِينَ اللِّيبِيَّةِ الْأَصْل. شَنَّ حَمْلَةً عَلَى فِلَسْطِينَ وَسَمَّاهَا الْمَلِكُ شِيشَق فِي الْكِتَابِ الْمُقَدَّس.',
+    achievements:'غَزْوُ فِلَسْطِين وَإِسْرَائِيل. إِعَادَةُ تَوْحِيدِ مِصْر. نَقْشُ انْتِصَارَاتِهِ فِي الْكَرْنَك.',
+    legacy:'يُرْبَطُ اسْمُهُ بِالْكِتَابِ الْمُقَدَّس مِمَّا يَجْعَلُهُ مَثَارَ اهْتِمَامٍ بَالِغٍ لِعُلَمَاءِ التَّارِيخِ الْمُقَارَن.',
+    tags:['الْأُسْرَةُ اللِّيبِيَّة','فِلَسْطِين','الْكِتَابُ الْمُقَدَّس','الْكَرْنَك'] },
+
+  { id:34, name:'طَهَرْقَا', latin:'Taharqa', era:'late', badge:'badge-late', eraName:'الْعَصْرُ الْمُتَأَخِّر', reign:'٦٩٠–٦٦٤ ق.م', dynasty:'الْأُسْرَةُ الْخَامِسَةُ وَالْعِشْرُون', capital:'طِيبَة وَنَبَتَة',
+    desc:'مَلِكُ النُّوبَةِ وَمِصْر. مَذْكُورٌ فِي الْكِتَابِ الْمُقَدَّس وَبَنَى مَعَابِدَ رَائِعَة.',
+    overview:'طَهَرْقَا مَلِكُ الْأُسْرَةِ الْكُوشِيَّةِ حَكَمَ مِصْرَ مِنَ النُّوبَة. مَذْكُورٌ فِي سِفْرِ الْمُلُوكِ الثَّانِي. بَنَى أَهْرَامًا فِي السُّودَانِ وَمَعَابِدَ فِي مِصْر.',
+    achievements:'حُكْمُ مِصْرَ وَالنُّوبَةِ مَعًا. بِنَاءُ الْأَهْرَامَاتِ النُّوبِيَّة. التَّصَدِّي لِلْآشُورِيِّين.',
+    legacy:'مَذْكُورٌ فِي الْكِتَابِ الْمُقَدَّس. أَهْرَامَاتُ السُّودَانِ الَّتِي بَنَاهَا لَا تَزَالُ قَائِمَة.',
+    tags:['النُّوبَة','الْكِتَابُ الْمُقَدَّس','أَهْرَامَاتُ السُّودَان','الْأُسْرَةُ الْكُوشِيَّة'] },
+
+  { id:35, name:'نِيقَاو الثَّانِي', latin:'Necho II', era:'late', badge:'badge-late', eraName:'الْعَصْرُ الْمُتَأَخِّر', reign:'٦١٠–٥٩٥ ق.م', dynasty:'الْأُسْرَةُ السَّادِسَةُ وَالْعِشْرُون', capital:'صَايَس',
+    desc:'أَوَّلُ مَنْ حَاوَلَ حَفْرَ قَنَاةٍ تَرْبِطُ الْبَحْرَيْنِ الْأَحْمَرَ وَالْمُتَوَسِّط.',
+    overview:'نِيقَاو الثَّانِي أَرْسَلَ أَوَّلَ دَوْرِيَّةٍ بَحْرِيَّةٍ تُطَوِّفُ حَوْلَ أَفْرِيقِيَا وَحَاوَلَ حَفْرَ قَنَاةٍ بَيْنَ الْبَحْرَيْن.',
+    achievements:'مُحَاوَلَةُ حَفْرِ قَنَاةِ السُّوَيْس. إِرْسَالُ رِحْلَةِ إِبْحَارٍ حَوْلَ أَفْرِيقِيَا. بِنَاءُ أُسْطُولٍ بَحْرِيّ.',
+    legacy:'مُبَادَرَتُهُ لِحَفْرِ قَنَاةِ السُّوَيْسِ كَانَتْ رُؤْيَةً جَبَّارَةً تَحَقَّقَتْ بَعْدَ أَلْفَيْنِ وَخَمْسِمِائَةِ عَام.',
+    tags:['قَنَاةُ السُّوَيْس','الرِّحْلَةُ حَوْلَ أَفْرِيقِيَا','الْبَحْرِيَّة','الْأُسْرَةُ السَّادِسَةُ وَالْعِشْرُون'] },
+
+  { id:36, name:'أَمَاسِيس', latin:'Amasis II', era:'late', badge:'badge-late', eraName:'الْعَصْرُ الْمُتَأَخِّر', reign:'٥٧٠–٥٢٦ ق.م', dynasty:'الْأُسْرَةُ السَّادِسَةُ وَالْعِشْرُون', capital:'صَايَس',
+    desc:'آخِرُ الْفَرَاعِنَةِ الْعِظَام. حَكَمَ فِي عَصْرٍ ذَهَبِيٍّ وَأَقَامَ عَلَاقَاتٍ مُتَمَيِّزَةً مَعَ الْإِغْرِيق.',
+    overview:'أَمَاسِيس مَلِكٌ مِنَ الشَّعْبِ اعْتَلَى الْعَرْشَ بِانْقِلَابٍ. حَكَمَ طَوِيلًا وَمَيَّزَ عَهْدَهُ الرَّخَاءُ وَالِانْفِتَاحُ عَلَى الْإِغْرِيق.',
+    achievements:'تَطْوِيرُ الْعَلَاقَاتِ الْإِغْرِيقِيَّةِ الْمِصْرِيَّة. حُكْمٌ طَوِيلٌ رَاسِخ. بِنَاءُ مَعَابِدَ ضَخْمَة.',
+    legacy:'وَصَفَهُ هِيرُودُوتُس بِالتَّفْصِيل. عَهْدُهُ يُعَدُّ آخِرَ عُصُورِ الِازْدِهَارِ الْمِصْرِيِّ الْمُسْتَقِل.',
+    tags:['الِانْفِتَاحُ الْإِغْرِيقِيّ','هِيرُودُوتُس','آخِرُ الذَّهَبِيّ','الْأُسْرَةُ السَّادِسَةُ وَالْعِشْرُون'] },
+
+  { id:37, name:'نَخْتَنَبُو الأول', latin:'Nectanebo I', era:'late', badge:'badge-late', eraName:'الْعَصْرُ الْمُتَأَخِّر', reign:'٣٨٠–٣٦٢ ق.م', dynasty:'الْأُسْرَةُ الثَّلَاثُون', capital:'صَبَنِّيطُوس',
+    desc:'مُؤَسِّسُ الْأُسْرَةِ الثَّلَاثِين، آخِرِ أُسْرَةٍ مِصْرِيَّةٍ خَالِصَة. بَانِي مَعَابِدَ كَثِيرَة.',
+    overview:'نَخْتَنَبُو الأول مُؤَسِّسُ الْأُسْرَةِ الثَّلَاثِينَ آخِرِ الْأُسَرِ الْفِرْعَوْنِيَّةِ الْمِصْرِيَّةِ الْخَالِصَة. دَافَعَ عَنْ مِصْرَ ضِدَّ الْهُجُومِ الْفَارِسِيِّ بِنَجَاح.',
+    achievements:'صَدَّ الْهُجُومَ الْفَارِسِيَّ الْأَوَّل. بِنَاءُ مَعَابِدَ كَثِيرَةٍ فِي أَرْجَاءِ مِصْر.',
+    legacy:'مُقَاوَمَتُهُ لِلْفُرْسِ أَطَالَتْ عُمْرَ الِاسْتِقْلَالِ الْمِصْرِيِّ جِيلًا كَامِلًا.',
+    tags:['الْأُسْرَةُ الثَّلَاثُون','مُقَاوَمَةُ الْفُرْس','آخِرُ أُسْرَةٍ مِصْرِيَّة','بِنَاءُ الْمَعَابِد'] },
+
+  { id:38, name:'حَاقُور', latin:'Hakor', era:'late', badge:'badge-late', eraName:'الْعَصْرُ الْمُتَأَخِّر', reign:'٣٩٣–٣٨٠ ق.م', dynasty:'الْأُسْرَةُ التَّاسِعَةُ وَالْعِشْرُون', capital:'مِنْدِيس',
+    desc:'فِرْعَوْنٌ مِنَ الدَّلْتَا قَاوَمَ الْفُرْسَ وَتَحَالَفَ مَعَ الْإِغْرِيق.',
+    overview:'حَاقُور مَلِكٌ مِنَ الْأُسْرَةِ التَّاسِعَةِ وَالْعِشْرِين تَحَالَفَ مَعَ الْيُونَانِيِّينَ لِصَدِّ الْخَطَرِ الْفَارِسِيِّ.',
+    achievements:'التَّحَالُفُ مَعَ الْيُونَان. صَدُّ الْهُجُومِ الْفَارِسِيّ. حُكْمٌ مُسْتَقِرٌّ نِسْبِيًّا.',
+    legacy:'تَجْسِيدُ صُمُودِ مِصْرَ أَمَامَ الضَّغُوطِ الْفَارِسِيَّةِ فِي آخِرِ أَيَّامِ الِاسْتِقْلَال.',
+    tags:['التَّحَالُفُ الْإِغْرِيقِيّ','مُقَاوَمَةُ الْفُرْس','الدَّلْتَا','الْأُسْرَةُ التَّاسِعَةُ وَالْعِشْرُون'] },
+
+  // ─── البطالمة — إضافية ───
+  { id:39, name:'بَطَلَيْمُوسُ الثَّانِي', latin:'Ptolemy II Philadelphus', era:'ptolemaic', badge:'badge-ptol', eraName:'الْعَصْرُ الْبَطَلَمِيّ', reign:'٢٨٣–٢٤٦ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة', capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'مُكْمِلُ مَسِيرَةِ أَبِيهِ. أَزْهَرَتْ فِي عَهْدِهِ مَكْتَبَةُ الْإِسْكَنْدَرِيَّة وَازْدَهَرَ الْعِلْمُ وَالشِّعْر.',
+    overview:'بَطَلَيْمُوسُ الثَّانِي الَّذِي لُقِّبَ بِفِيلَادِيلْفُوس أَيْ «مُحِبُّ أَخِيه» أَزْهَرَتْ فِي عَهْدِهِ مَكْتَبَةُ الْإِسْكَنْدَرِيَّة وَاسْتَقْطَبَتْ أَعْظَمَ الْعُلَمَاءِ.',
+    achievements:'تَطْوِيرُ مَكْتَبَةِ الْإِسْكَنْدَرِيَّة. بِنَاءُ فَانُوسِ الْإِسْكَنْدَرِيَّة. رِعَايَةُ الْعُلُومِ وَالآدَاب.',
+    legacy:'عَهْدُهُ الْعَصْرُ الذَّهَبِيُّ لِمَكْتَبَةِ الْإِسْكَنْدَرِيَّة الَّتِي أَصْبَحَتْ مَرْكَزَ الثَّقَافَةِ الْعَالَمِيَّة.',
+    tags:['مَكْتَبَةُ الْإِسْكَنْدَرِيَّة','فَانُوسُ الْإِسْكَنْدَرِيَّة','الْعَصْرُ الذَّهَبِيّ','الْعُلُومُ وَالآدَاب'] },
+
+  { id:40, name:'بَطَلَيْمُوسُ الثَّالِث', latin:'Ptolemy III Euergetes', era:'ptolemaic', badge:'badge-ptol', eraName:'الْعَصْرُ الْبَطَلَمِيّ', reign:'٢٤٦–٢٢٢ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة', capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'أَعْظَمُ مُلُوكِ الْبَطَالِمَةِ فِي الْمَيْدَانِ الْعَسْكَرِيّ. وَسَّعَ الْإِمْبِرَاطُورِيَّةَ حَتَّى بِلَادِ فَارِس.',
+    overview:'بَطَلَيْمُوسُ الثَّالِث الَّذِي لُقِّبَ بِ«الْمُحْسِن» وَسَّعَ الْإِمْبِرَاطُورِيَّةَ الْبَطَلَمِيَّةَ إِلَى أَقْصَى اتِّسَاعِهَا وَفَتَحَ أَجْزَاءً مِنْ بِلَادِ فَارِس.',
+    achievements:'التَّوَسُّعُ الْعَسْكَرِيُّ الْكَبِير. إِضَافَةُ آلَافٍ مِنَ الْمَخْطُوطَاتِ لِلْمَكْتَبَة. إِصْلَاحَاتٌ تَقْوِيمِيَّة.',
+    legacy:'فِي عَهْدِهِ بَلَغَتِ الْإِمْبِرَاطُورِيَّةُ الْبَطَلَمِيَّةُ أَقْصَى اتِّسَاعِهَا الْجُغْرَافِيّ.',
+    tags:['أَعْظَمُ الْبَطَالِمَة','التَّوَسُّعُ الْعَسْكَرِيّ','الْمَخْطُوطَات','الْإِمْبِرَاطُورِيَّةُ الْبَطَلَمِيَّة'] },
+
+  { id:41, name:'بِيرِيَنِيكِي الثَّانِيَة', latin:'Berenice II', era:'ptolemaic', badge:'badge-ptol', eraName:'الْعَصْرُ الْبَطَلَمِيّ', reign:'٢٤٤–٢٢١ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة', capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'مَلِكَةٌ بَطَلَمِيَّةٌ أَسْطُورِيَّة. نَذَرَتْ شَعْرَهَا لِلآلِهَةِ فَتَحَوَّلَ إِلَى كَوْكَبَة.',
+    overview:'بِيرِيَنِيكِي الثَّانِيَة زَوْجُ بَطَلَيْمُوسَ الثَّالِث نَذَرَتْ شَعْرَهَا الذَّهَبِيَّ لِلآلِهَةِ مِنْ أَجْلِ سَلَامَةِ زَوْجِهَا فَأَلَّهَهُ الْعَالِمُ قَطَيَّا قِطَعًا وَسَمَّاهُ كَوْكَبَةَ شَعْرِ بِيرِيَنِيكِي.',
+    achievements:'حُكْمٌ بِالشَّرَاكَةِ مَعَ زَوْجِهَا. نَذَرُ الشَّعْرِ الشَّهِير. رِعَايَةُ الثَّقَافَة.',
+    legacy:'كَوْكَبَةُ «شَعْرُ بِيرِيَنِيكِي» تَحْمِلُ اسْمَهَا حَتَّى الْيَوْم. قَصِيدَةُ كَالِّيمَاخُوس الشَّهِيرَة.',
+    tags:['كَوْكَبَةُ الشَّعْر','الْأُسْطُورَة','الْبَطَالِمَة','الْفَلَك'] },
+
+  { id:42, name:'بَطَلَيْمُوسُ الخَامِس', latin:'Ptolemy V Epiphanes', era:'ptolemaic', badge:'badge-ptol', eraName:'الْعَصْرُ الْبَطَلَمِيّ', reign:'٢٠٤–١٨١ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة', capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'صَاحِبُ حَجَرِ رُوزِيتَا الشَّهِير. الْمَرْسُومُ الصَّادِرُ فِي عَهْدِهِ فَكَّ رُمُوزَ الْهِيرُوغْلِيفِيَّة.',
+    overview:'بَطَلَيْمُوسُ الخَامِس تَوَلَّى الْعَرْشَ وَهُوَ طِفْلٌ بَعْدَ اغْتِيَالِ وَالِدَيْه. حَجَرُ رُوزِيتَا الصَّادِرُ فِي عَهْدِهِ غَيَّرَ تَارِيخَ عِلْمِ الآثَار.',
+    achievements:'حَجَرُ رُوزِيتَا صَدَرَ فِي عَهْدِه. الْمَرْسُومُ الثُّلَاثِيُّ اللُّغَة.',
+    legacy:'حَجَرُ رُوزِيتَا مِنْ أَهَمِّ الِاكْتِشَافَاتِ الْأَثَرِيَّةِ فِي التَّارِيخ. بِهِ فُكَّتْ رُمُوزُ الْكِتَابَةِ الْهِيرُوغْلِيفِيَّة.',
+    tags:['حَجَرُ رُوزِيتَا','فَكُّ الرُّمُوز','الْهِيرُوغْلِيفِيَّة','الْمَرْسُومُ الثُّلَاثِيّ'] },
+
+  // ─── فراعنة متنوعون ───
+  { id:43, name:'إِيزِيس', latin:'Isis — Queen Regent', era:'ptolemaic', badge:'badge-ptol', eraName:'الْعَصْرُ الْبَطَلَمِيّ', reign:'٣٩–٣٤ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة', capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'أُمُّ كَلِيُوبَاتْرَا وَوَصِيَّةُ الْعَرْشِ. حَكَمَتْ بِحِكْمَةٍ فِي مَرْحَلَةٍ بَالِغَةِ الدَّقَّة.',
+    overview:'إِيزِيس وَالِدَةُ كَلِيُوبَاتْرَا السَّابِعَة حَكَمَتْ وَصِيَّةً عَلَى أَبْنَائِهَا الصِّغَار. تَمَيَّزَتْ بِدِبْلُومَاسِيَّةٍ دَقِيقَةٍ فِي مَرْحَلَةٍ مِنَ الصِّرَاعَاتِ الدَّاخِلِيَّة.',
+    achievements:'الْحِفَاظُ عَلَى الْعَرْشِ فِي مَرْحَلَةٍ مُضْطَرِبَة. تَرْبِيَةُ كَلِيُوبَاتْرَا السَّابِعَة.',
+    legacy:'كَلِيُوبَاتْرَا السَّابِعَةُ الَّتِي رَبَّتْهَا أَصْبَحَتِ الْمَلِكَةَ الْأَشْهَرَ فِي التَّارِيخ.',
+    tags:['وَصِيَّةُ الْعَرْش','أُمُّ كَلِيُوبَاتْرَا','الدِّبْلُومَاسِيَّة','الْبَطَالِمَة'] },
+
+  { id:44, name:'أَمِنِمْحَات الثَّانِي', latin:'Amenemhat II', era:'middle', badge:'badge-middle', eraName:'الدَّوْلَةُ الْوُسْطَى', reign:'١٩٢٩–١٨٩٥ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةَ عَشَرَة', capital:'إِتْجَتَاوِي',
+    desc:'مَلِكُ الِانْفِتَاحِ التِّجَارِيّ. فَتَحَ طُرُقَ التِّجَارَةِ نَحْوَ الشَّرْقِ وَإِفْرِيقِيَا.',
+    overview:'أَمِنِمْحَات الثَّانِي مَيَّزَ حُكْمَهُ الِانْفِتَاحُ التِّجَارِيُّ وَالسِّلَام. أَرْسَلَ بَعَثَاتٍ تِجَارِيَّةً إِلَى بُونْت وَبِلَادِ الشَّامِ وَجَزِيرَةِ كْرِيت.',
+    achievements:'بَعَثَاتٌ تِجَارِيَّةٌ مُتَعَدِّدَة. كُنُوزُ تَوْدِ النَّادِرَة. السَّلَامُ مَعَ الدُّوَلِ الْمُجَاوِرَة.',
+    legacy:'كُنُوزُ تَوْدِ الَّتِي اكْتُشِفَتْ شَاهِدَةٌ عَلَى عُمْقِ الرَّوَابِطِ التِّجَارِيَّةِ فِي عَهْدِه.',
+    tags:['كُنُوزُ تَوْد','التِّجَارَةُ الدَّوْلِيَّة','بِلَادُ الشَّام','الدَّوْلَةُ الْوُسْطَى'] },
+
+  { id:45, name:'سنوسرت الأول', latin:'Senusret I', era:'middle', badge:'badge-middle', eraName:'الدَّوْلَةُ الْوُسْطَى', reign:'١٩٧١–١٩٢٦ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةَ عَشَرَة', capital:'إِتْجَتَاوِي',
+    desc:'الْمَلِكُ الْبَانِي الْمُصْلِح. وَسَّعَ حُدُودَ مِصْرَ وَبَنَى مَعَابِدَ رَائِعَة.',
+    overview:'سنوسرت الأول ابْنُ أَمِنِمْحَات الأول وَسَّعَ حُدُودَ مِصْرَ جَنُوبًا وَشَرَّقَ وَبَنَى الْمَسَلَّةَ الْبَيْضَاءَ فِي الْمَطَرِيَّةِ أَطْوَلَ مَسَلَّةٍ مَوْجُودَةٍ حَتَّى الْيَوْم.',
+    achievements:'بِنَاءُ مَسَلَّةِ الْمَطَرِيَّة أَطْوَلِ مَسَلَّةٍ حَتَّى الْيَوْم. تَوْسِيعُ الْحُدُود. بِنَاءُ مَعَابِدَ رَائِعَة.',
+    legacy:'مَسَلَّتُهُ الْبَيْضَاءُ لَا تَزَالُ قَائِمَةً فِي الْقَاهِرَة وَهِيَ أَقْدَمُ نَصْبٍ تَذْكَارِيٍّ فِي مِصْر.',
+    tags:['مَسَلَّةُ الْمَطَرِيَّة','تَوْسِيعُ الْحُدُود','الدَّوْلَةُ الْوُسْطَى','الْأُسْرَةُ الثَّانِيَةَ عَشَرَة'] },
+
+  { id:46, name:'رَمْسِيسُ التَّاسِع', latin:'Ramesses IX', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١١٢٩–١١١١ ق.م', dynasty:'الْأُسْرَةُ الْعِشْرُون', capital:'بِيـ-رَمْسِيس',
+    desc:'فِرْعَوْنٌ فِي زَمَنِ الْفَوْضَى. شَهِدَ عَهْدُهُ أَوَّلَ تَحْقِيقٍ فِي سَرِقَةِ الْمَقَابِر.',
+    overview:'رَمْسِيسُ التَّاسِع حَكَمَ فِي عَصْرِ تَدَهْوُرٍ وَفَسَاد. أَبْرَزُ مَا يُمَيِّزُ عَهْدَهُ أَوَّلُ وَثَائِقَ قَضَائِيَّةٍ تَصِفُ التَّحْقِيقَ فِي سَرِقَةِ مَقَابِرِ وَادِي الْمُلُوك.',
+    achievements:'وَثَائِقُ سَرِقَةِ الْمَقَابِرِ النَّادِرَة. مَحَاكِمُ وَتَحْقِيقَاتٌ مُوَثَّقَة.',
+    legacy:'وَثَائِقُ عَهْدِهِ مَصْدَرٌ لَا يُقَدَّرُ لِفَهْمِ الْحَيَاةِ الِاجْتِمَاعِيَّةِ وَالْقَضَائِيَّةِ فِي مِصْرَ الْقَدِيمَة.',
+    tags:['سَرِقَةُ الْمَقَابِر','وَادِي الْمُلُوك','التَّحْقِيقُ الْقَضَائِيّ','الْأُسْرَةُ الْعِشْرُون'] },
+
+  { id:47, name:'أُوسُورْكُون الثاني', latin:'Osorkon II', era:'late', badge:'badge-late', eraName:'الْعَصْرُ الْمُتَأَخِّر', reign:'٨٧٢–٨٣٧ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةُ وَالْعِشْرُون', capital:'بُوبَاسْتِس',
+    desc:'مَلِكُ الْمُهْرَجَانَات. أَقَامَ أَكْبَرَ احْتِفَالَاتِ عَيْدِ سِد فِي التَّارِيخ.',
+    overview:'أُوسُورْكُون الثاني مَلِكٌ مِنَ الْأُسْرَةِ اللِّيبِيَّةِ اشْتُهِرَ بِإِقَامَةِ احْتِفَالَاتٍ دِينِيَّةٍ ضَخْمَةٍ وَبِنَاءِ مَعَابِدَ كَبِيرَة.',
+    achievements:'عِيدُ سِد الضَّخْم. بِنَاءُ أَجْزَاءٍ مِنَ الْكَرْنَك. تَحَالُفَاتٌ مَعَ الدُّوَلِ الْمُجَاوِرَة.',
+    legacy:'سِجِلَّاتُ احْتِفَالَاتِهِ الدِّينِيَّةِ تُلْقِي الضَّوْءَ عَلَى الطُّقُوسِ الْمِصْرِيَّةِ الْعَرِيقَة.',
+    tags:['عِيدُ سِد','الْأُسْرَةُ اللِّيبِيَّة','بُوبَاسْتِس','الْمَعَابِد'] },
+
+  { id:48, name:'بَقَنْرَنِف', latin:'Bakenranef / Bocchoris', era:'late', badge:'badge-late', eraName:'الْعَصْرُ الْمُتَأَخِّر', reign:'٧٢٠–٧١٥ ق.م', dynasty:'الْأُسْرَةُ الرَّابِعَةُ وَالْعِشْرُون', capital:'صَايَس',
+    desc:'فِرْعَوْنٌ حَكِيمٌ. عُرِفَ بِإِصْلَاحَاتِهِ الْقَانُونِيَّةِ وَنَزَاهَتِهِ النَّادِرَة.',
+    overview:'بَقَنْرَنِف الَّذِي عَرَفَهُ الْإِغْرِيقُ بِبُوكُّورِيس اشْتُهِرَ فِي الرِّوَايَاتِ الْقَدِيمَةِ بِالْحِكْمَةِ وَالنَّزَاهَةِ وَإِصْلَاحَاتِهِ الْقَانُونِيَّة.',
+    achievements:'إِصْلَاحَاتٌ قَانُونِيَّةٌ مُهِمَّة. رِوَايَاتُ حِكْمَتِهِ عَبْرَ التَّارِيخ.',
+    legacy:'رَغْمَ قِصَرِ حُكْمِهِ عُرِفَ فِي الْأَدَبِ الْمِصْرِيِّ وَالْإِغْرِيقِيِّ رَمْزًا لِلْحَاكِمِ الْعَادِل.',
+    tags:['الْحِكْمَة','الْإِصْلَاحَاتُ الْقَانُونِيَّة','الْأُسْرَةُ الرَّابِعَةُ وَالْعِشْرُون','صَايَس'] },
+
+  { id:49, name:'سنوسرت الثاني', latin:'Senusret II', era:'middle', badge:'badge-middle', eraName:'الدَّوْلَةُ الْوُسْطَى', reign:'١٨٩٧–١٨٧٨ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةَ عَشَرَة', capital:'إِتْجَتَاوِي',
+    desc:'مَلِكُ الْفَيُّوم. حَوَّلَ الْفَيُّومَ إِلَى جَنَّةٍ زِرَاعِيَّةٍ بِنِظَامِ رَيٍّ مُبْتَكَر.',
+    overview:'سنوسرت الثاني حَوَّلَ مِنْطَقَةَ الْفَيُّوم إِلَى أَرْضٍ زِرَاعِيَّةٍ خَصِيبَةٍ بِبِنَاءِ قَنَوَاتِ رَيٍّ ضَخْمَة.',
+    achievements:'تَطْوِيرُ نِظَامِ الرَّيِّ فِي الْفَيُّوم. بِنَاءُ هَرَمِهِ فِي اللَّهُون. تَشْجِيعُ الزِّرَاعَة.',
+    legacy:'نِظَامُ الرَّيِّ الَّذِي أَسَّسَهُ جَعَلَ الْفَيُّومَ سَلَّةَ غِذَاءٍ لِمِصْرَ لِقُرُونٍ طَوِيلَة.',
+    tags:['الْفَيُّوم','نِظَامُ الرَّيّ','الزِّرَاعَة','الدَّوْلَةُ الْوُسْطَى'] },
+
+  { id:50, name:'بطليموس الرابع', latin:'Ptolemy IV Philopator', era:'ptolemaic', badge:'badge-ptol', eraName:'الْعَصْرُ الْبَطَلَمِيّ', reign:'٢٢١–٢٠٤ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة', capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'مَلِكٌ أَدِيبٌ وَشَاعِر. هَزَمَ السِّلُوقِيِّينَ فِي مَعْرَكَةِ رَفَحَ الشَّهِيرَة.',
+    overview:'بَطَلَيْمُوسُ الرَّابِع مَلِكٌ كَانَ يُحِبُّ الْأَدَبَ وَالشِّعْرَ لَكِنَّهُ انْتَصَرَ فِي مَعْرَكَةِ رَفَحَ الْكُبْرَى ضِدَّ أَنْطِيُوخُوس الثَّالِث.',
+    achievements:'النَّصْرُ فِي مَعْرَكَةِ رَفَح. رِعَايَةُ الْأَدَبِ وَالشِّعْر. بِنَاءُ مَعَابِدَ.',
+    legacy:'مَعْرَكَةُ رَفَحَ إِحْدَى أَكْبَرِ الْمَعَارِكِ فِي الْعَالَمِ الْهِلِّينِسْتِيّ. أَدَبُهُ الشَّخْصِيُّ مِنَ النَّوَادِر.',
+    tags:['مَعْرَكَةُ رَفَح','الشِّعْرُ وَالْأَدَب','الْبَطَالِمَة','الْهِلِّينِسْتِيَّة'] },
+
+  { id:51, name:'تُوتِمَسُ الأول', latin:'Thutmose I Extra', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'سَبَقَ ذِكْرُه', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'أَسَّسَ نَمَطَ دَفْنِ الْمُلُوكِ فِي وَادِي الْمُلُوكِ لِحِمَايَةِ الْكُنُوزِ مِنَ السَّرِقَة.',
+    overview:'تُحُتْمِسُ الأول اخْتَارَ وَادِيَ الْمُلُوكِ لِيَكُونَ مَقْبَرَةً مَلَكِيَّةً سِرِّيَّةً بَعِيدًا عَنِ الْأَهْرَامَاتِ الَّتِي نُهِبَتْ.',
+    achievements:'تَأْسِيسُ وَادِي الْمُلُوك. التَّوَسُّعُ الْعَسْكَرِيُّ الضَّخْم.',
+    legacy:'وَادِي الْمُلُوكِ الَّذِي بَدَأَهُ يَحْوِي اليوم أَكْثَرَ مِنْ ثَلَاثَةٍ وَسِتِّينَ مَقْبَرَةً مَلَكِيَّة.',
+    tags:['وَادِي الْمُلُوك','الدَّفْنُ السِّرِّيّ','التَّوَسُّع','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة'] },
+
+  { id:52, name:'أَحْمَسُ نِفِرْتَارِي', latin:'Ahmose-Nefertari', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٥٥٠–١٥٢٥ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'أَوَّلُ مَلِكَةٍ تُؤَلَّهُ فِي مِصْر. زَوْجَةُ أَحْمَسَ مُحَرِّرِ مِصْر وَأُمُّ أَمِنْحُوتِبَ الأول.',
+    overview:'أَحْمَسُ نِفِرْتَارِي زَوْجَةُ أَحْمَسَ الأول وَأُمُّ أَمِنْحُوتِبَ الأول. أُوَّلُ مَلِكَةٍ تَتَلَقَّى لَقَبَ «زَوْجَةِ الْإِلَهِ آمُون» وَأَوَّلُ امْرَأَةٍ تُؤَلَّهُ فِي حَيَاتِهَا.',
+    achievements:'لَقَبُ «زَوْجَةِ الْإِلَهِ». التَّأْلِيهُ فِي حَيَاتِهَا. رِعَايَةُ الْمَعَابِد.',
+    legacy:'عُبِدَتْ لِقُرُونٍ فِي دير المدينة. أَوَّلُ امْرَأَةٍ مَصْرِيَّةٍ تُؤَلَّهُ رَسْمِيًّا.',
+    tags:['زَوْجَةُ الْإِلَه','أَوَّلُ تَأْلِيهٍ أُنْثَوِيّ','دير المدينة','الدَّوْلَةُ الْحَدِيثَة'] },
+
+  { id:53, name:'رَمْسِيسُ السَّادِس', latin:'Ramesses VI', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١١٤٣–١١٣٦ ق.م', dynasty:'الْأُسْرَةُ الْعِشْرُون', capital:'بِيـ-رَمْسِيس',
+    desc:'مَقْبَرَتُهُ أَكْبَرُ مَقَابِرِ وَادِي الْمُلُوك. نَقُوشُ «كِتَابِ الْكَوَنِ» الرَّائِعَة.',
+    overview:'رَمْسِيسُ السَّادِس مَشْهُورٌ بِمَقْبَرَتِهِ الضَّخْمَةِ فِي وَادِي الْمُلُوك. كَمَا أَنَّ مَقْبَرَتَهُ كَانَتِ الْحَائِلَ الَّذِي أَنْقَذَ مَقْبَرَةَ تُوتٍ عَنْخِ آمُونَ مِنَ النَّبْش.',
+    achievements:'مَقْبَرَةٌ ضَخْمَةٌ بِنُقُوشٍ رَائِعَة. إِنْقَاذُ مَقْبَرَةِ تُوتٍ عَنْخِ آمُونَ بِالصُّدْفَة.',
+    legacy:'نُقُوشُ كِتَابِ الْكَوَنِ فِي مَقْبَرَتِهِ تَحَفٌ فَنِّيَّةٌ خَالِدَة. تَغْطِيَةُ مَقْبَرَتِهِ لِمَقْبَرَةِ تُوتٍ عَنْخِ آمُونَ أَنْقَذَهَا مِنَ النَّهْب.',
+    tags:['مَقْبَرَةٌ ضَخْمَة','كِتَابُ الْكَوَن','وَادِي الْمُلُوك','إِنْقَاذُ مَقْبَرَةِ تُوت'] },
+
+  { id:54, name:'أَمِنْحُوتِبُ الرَّابِع', latin:'Amenhotep IV / Akhenaten', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٣٥٣–١٣٣٦ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'أَخِيتَاتُون',
+    desc:'الِاسْمُ الْأَوَّلُ لِأَخْنَاتُون قَبْلَ الثَّوْرَة. غَيَّرَ اسْمَهُ وَعَاصِمَتَهُ وَدِيَانَتَه.',
+    overview:'أَمِنْحُوتِبُ الرَّابِع بَدَأَ حُكْمَهُ بِاسْمٍ تَقْلِيدِيٍّ ثُمَّ غَيَّرَهُ إِلَى أَخْنَاتُون إِعْلَانًا لِثَوْرَتِهِ الدِّينِيَّة.',
+    achievements:'إِعْلَانُ الدِّيَانَةِ التَّوْحِيدِيَّة. تَغْيِيرُ الِاسْمِ وَالْعَاصِمَة.',
+    legacy:'تَحَوُّلُهُ الدِّينِيُّ مِنْ أَمِنْحُوتِبَ إِلَى أَخْنَاتُون يُمَثِّلُ انْقِطَاعًا جَذْرِيًّا نَادِرًا فِي التَّارِيخ.',
+    tags:['تَغْيِيرُ الِاسْم','الثَّوْرَةُ الدِّينِيَّة','أَخْنَاتُون','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة'] },
+
+  { id:55, name:'سَمَنْخْكَارِع', latin:'Smenkhkare', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٣٣٦–١٣٣٤ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'طِيبَة',
+    desc:'الْفِرْعَوْنُ الْغَامِض. هُوِيَّتُهُ لَا تَزَالُ مَحَلَّ جَدَلٍ بَيْنَ الْعُلَمَاء.',
+    overview:'سَمَنْخْكَارِع مِنْ أَكْثَرِ شَخْصِيَّاتِ التَّارِيخِ الْفِرْعَوْنِيِّ غُمُوضًا. حَكَمَ فَتْرَةً قَصِيرَةً بَيْنَ أَخْنَاتُون وَتُوتٍ عَنْخِ آمُون.',
+    achievements:'انْتِقَالُ السُّلْطَةِ فِي مَرْحَلَةٍ مُضْطَرِبَة.',
+    legacy:'هُوِيَّتُهُ الْغَامِضَةُ تَجْعَلُهُ مَحَلَّ بَحْثٍ مُسْتَمِرٍّ مِنَ الْعُلَمَاء.',
+    tags:['الْفِرْعَوْنُ الْغَامِض','عَصْرُ عَمَارِنَة','الِانْتِقَال','الْأُسْرَةُ الثَّامِنَةَ عَشَرَة'] },
+
+  { id:56, name:'آي', latin:'Ay', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٣٢٣–١٣١٩ ق.م', dynasty:'الْأُسْرَةُ الثَّامِنَةَ عَشَرَة', capital:'مَنْف',
+    desc:'الْوَزِيرُ الَّذِي أَصْبَحَ مَلِكًا. تَوَلَّى الْعَرْشَ بَعْدَ تُوتٍ عَنْخِ آمُون مُبَاشَرَة.',
+    overview:'آي كَانَ وَزِيرًا كَبِيرًا فِي عَهْدِ أَخْنَاتُون وَتُوتٍ عَنْخِ آمُون قَبْلَ أَنْ يَتَوَلَّى الْعَرْشَ. يُعْتَقَدُ أَنَّهُ مِنْ أَقَارِبِ نَفَرْتِيتِي.',
+    achievements:'الْحُكْمُ فِي مَرْحَلَةِ انْتِقَالٍ دَقِيقَة. الدَّفْنُ فِي وَادِي الْمُلُوك.',
+    legacy:'قَبْرُهُ فِي وَادِي الْمُلُوكِ يَحْوِي أَجْمَلَ مَنَاظِرِ صَيْدِ الطَّيْرِ فِي الْفَنِّ الْمِصْرِيّ.',
+    tags:['الْوَزِيرُ الْمَلِك','عَصْرُ عَمَارِنَة','وَادِي الْمُلُوك','الِانْتِقَال'] },
+
+  { id:57, name:'رَمْسِيسُ الأول', latin:'Ramesses I', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١٢٩٢–١٢٩٠ ق.م', dynasty:'الْأُسْرَةُ التَّاسِعَةَ عَشَرَة', capital:'مَنْف',
+    desc:'مُؤَسِّسُ أُسْرَةِ الرَّعَامِسَة. اخْتَارَهُ حُورِمْحِب خَلِيفَةً رَغْمَ كِبَرِ سِنِّهِ.',
+    overview:'رَمْسِيسُ الأول قَائِدٌ عَسْكَرِيٌّ كَبِيرٌ اخْتَارَهُ حُورِمْحِب لِيَخْلُفَهُ وَيُؤَسِّسَ أُسْرَةً جَدِيدَة.',
+    achievements:'تَأْسِيسُ الْأُسْرَةِ التَّاسِعَةَ عَشَرَة. قِيَادَةُ الْجَيْشِ.',
+    legacy:'رَغْمَ قِصَرِ حُكْمِهِ أَسَّسَ أُسْرَةً أَنْجَبَتْ رَمْسِيسَ الثَّانِي أَعْظَمَ الْفَرَاعِنَة.',
+    tags:['أُسْرَةُ الرَّعَامِسَة','الْأُسْرَةُ التَّاسِعَةَ عَشَرَة','الْقَائِدُ الْمَلِك','الِانْتِقَال'] },
+
+  { id:58, name:'رَمْسِيسُ الثَّامِن', latin:'Ramesses VIII', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١١٢٩–١١٢٧ ق.م', dynasty:'الْأُسْرَةُ الْعِشْرُون', capital:'بِيـ-رَمْسِيس',
+    desc:'فِرْعَوْنٌ قَصِيرُ الْحُكْمِ. حَكَمَ فِي عَصْرِ انْحِدَارٍ وَظَلَّ غَامِضًا.',
+    overview:'رَمْسِيسُ الثَّامِن مِنَ الْفَرَاعِنَةِ الَّذِينَ حَكَمُوا فَتَرَاتٍ قَصِيرَةً فِي عَصْرِ الِانْحِدَار.',
+    achievements:'الْحُكْمُ فِي مَرْحَلَةٍ صَعْبَة.',
+    legacy:'مِنَ الْفَرَاعِنَةِ الَّذِينَ يُجَسِّدُونَ مَرْحَلَةَ انْحِدَارِ الدَّوْلَةِ الْحَدِيثَة.',
+    tags:['الِانْحِدَار','الْأُسْرَةُ الْعِشْرُون','فَتْرَةٌ قَصِيرَة','الرَّعَامِسَة'] },
+
+  { id:59, name:'بطليموس السادس', latin:'Ptolemy VI Philometor', era:'ptolemaic', badge:'badge-ptol', eraName:'الْعَصْرُ الْبَطَلَمِيّ', reign:'١٨٠–١٤٥ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة', capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'مَلِكٌ شَرِيفٌ حَكَمَ بِإِنْسَانِيَّة. اسْتَقْطَبَ الْيَهُودَ وَسَمَحَ بِبِنَاءِ هَيْكَلٍ مِصْرِيٍّ لَهُم.',
+    overview:'بَطَلَيْمُوسُ السَّادِس مَعْرُوفٌ بِتَسَامُحِهِ الدِّينِيِّ. سَمَحَ لِلْيَهُودِ بِبِنَاءِ هَيْكَلٍ فِي مِصْر.',
+    achievements:'السَّمَاحُ لِبِنَاءِ الْهَيْكَلِ الْيَهُودِيِّ فِي لِيُونْتُوبُولِيس. التَّسَامُحُ الدِّينِيّ.',
+    legacy:'هَيْكَلُ لِيُونْتُوبُولِيس الَّذِي سُمِحَ بِبِنَائِهِ فِي عَهْدِهِ مَكَانٌ فَرِيدٌ فِي تَارِيخِ الْأَدْيَان.',
+    tags:['التَّسَامُحُ الدِّينِيّ','الْهَيْكَلُ الْيَهُودِيّ','الْإِنْسَانِيَّة','الْبَطَالِمَة'] },
+
+  { id:60, name:'بطليموس الثاني عشر', latin:'Ptolemy XII Auletes', era:'ptolemaic', badge:'badge-ptol', eraName:'الْعَصْرُ الْبَطَلَمِيّ', reign:'٨٠–٥٨ ق.م', dynasty:'الْأُسْرَةُ الْبَطَلَمِيَّة', capital:'الْإِسْكَنْدَرِيَّة',
+    desc:'وَالِدُ كَلِيُوبَاتْرَا السَّابِعَة. اشْتُهِرَ بِعَزْفِ الْفِلَوت وَاللُّجُوءِ إِلَى رُومَا.',
+    overview:'بَطَلَيْمُوسُ الثَّانِي عَشَرَ وَالِدُ كَلِيُوبَاتْرَا السَّابِعَة. اضْطُرَّ إِلَى مُغَادَرَةِ مِصْرَ وَاللُّجُوءِ إِلَى رُومَا لِيَعُودَ بِمُسَاعَدَتِهَا.',
+    achievements:'الدِّبْلُومَاسِيَّةُ مَعَ رُومَا. الْعَوْدَةُ إِلَى الْعَرْش.',
+    legacy:'حُكْمُهُ يُجَسِّدُ مَرْحَلَةَ اعْتِمَادِ مِصْرَ عَلَى رُومَا قُبَيْلَ سُقُوطِ الدَّوْلَةِ الْبَطَلَمِيَّة.',
+    tags:['وَالِدُ كَلِيُوبَاتْرَا','اللُّجُوءُ إِلَى رُومَا','الْبَطَالِمَة','الِانْحِدَار'] },
+
+  { id:61, name:'أَمِنِمْحَات الرَّابِع', latin:'Amenemhat IV', era:'middle', badge:'badge-middle', eraName:'الدَّوْلَةُ الْوُسْطَى', reign:'١٨١٤–١٨٠٦ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةَ عَشَرَة', capital:'إِتْجَتَاوِي',
+    desc:'آخِرُ مُلُوكِ الذُّكُورِ فِي الْأُسْرَةِ الثَّانِيَةَ عَشَرَة. خَلَفَهُ أُخْتُهُ سُبِكْنِفِرُو.',
+    overview:'أَمِنِمْحَات الرَّابِع آخِرُ مُلُوكِ الذُّكُورِ فِي الْأُسْرَةِ الثَّانِيَةَ عَشَرَة. أَرْسَلَ بَعَثَاتٍ إِلَى سِينَاءَ وَبُونْت.',
+    achievements:'بَعَثَاتُ سِينَاء. حُكْمٌ هَادِئٌ. إِرْثُهُ لِأُخْتِهِ سُبِكْنِفِرُو.',
+    legacy:'انْتِقَالُ الْعَرْشِ لِأُخْتِهِ سُبِكْنِفِرُو هُوَ أَوَّلُ حُكْمٍ أُنْثَوِيٍّ مُؤَكَّدٍ فِي التَّارِيخِ الْمِصْرِيّ.',
+    tags:['الْأُسْرَةُ الثَّانِيَةَ عَشَرَة','انْتِقَالُ السُّلْطَة','الدَّوْلَةُ الْوُسْطَى','بُونْت'] },
+
+  { id:62, name:'سُبِكْنِفِرُو', latin:'Sobekneferu', era:'middle', badge:'badge-middle', eraName:'الدَّوْلَةُ الْوُسْطَى', reign:'١٨٠٦–١٨٠٢ ق.م', dynasty:'الْأُسْرَةُ الثَّانِيَةَ عَشَرَة', capital:'إِتْجَتَاوِي',
+    desc:'أَوَّلُ مَلِكَةٍ مُؤَكَّدَةٍ فِي التَّارِيخِ الْمِصْرِيّ. سَبَقَتْ حَتْشِبْسُوت بِأَكْثَرَ مِنْ قَرْنَيْن.',
+    overview:'سُبِكْنِفِرُو هِيَ أَوَّلُ مَلِكَةٍ مُؤَكَّدَةٍ تَحْمِلُ الْأَلْقَابَ الْكَامِلَةَ لِلْفِرْعَوْن. حَكَمَتْ بَعْدَ أَخِيهَا أَمِنِمْحَات الرَّابِع وَسَبَقَتْ حَتْشِبْسُوت بِأَكْثَرَ مِنْ قَرْنَيْن.',
+    achievements:'أَوَّلُ حُكْمٍ أُنْثَوِيٍّ مُؤَكَّد. وَضَعَتِ اسْمَهَا فِي قَوَائِمِ الْمُلُوك.',
+    legacy:'تُعَدُّ سُبِكْنِفِرُو أَوَّلَ فِرْعَوْنَةٍ مُؤَكَّدَةٍ فِي التَّارِيخِ الْمِصْرِيّ. أَثْبَتَتْ أَنَّ الْمَرْأَةَ كَانَتْ تَمْلِكُ حَقَّ الْعَرْشِ مُنْذُ الْقِدَم.',
+    tags:['أَوَّلُ مَلِكَةٍ مُؤَكَّدَة','الْحُكْمُ الْأُنْثَوِيّ','سَبَقَتْ حَتْشِبْسُوت','الدَّوْلَةُ الْوُسْطَى'] },
+
+  { id:63, name:'مِيرِنِ الثَّانِي', latin:'Mernre II', era:'old', badge:'badge-old', eraName:'الدَّوْلَةُ الْقَدِيمَة', reign:'٢٢٨٤–٢٢٧٨ ق.م', dynasty:'الْأُسْرَةُ السَّادِسَة', capital:'مَنْف',
+    desc:'فِرْعَوْنٌ قَصِيرُ الْحُكْمِ مِنَ الدَّوْلَةِ الْقَدِيمَة. خَلَفَهُ أَخُوهُ بيبي الثَّانِي.',
+    overview:'مِيرِنِ الثَّانِي حَكَمَ فَتْرَةً قَصِيرَةً جِدًّا قَبْلَ أَنْ يَخْلُفَهُ أَخُوهُ بيبي الثَّانِي الَّذِي حَكَمَ تِسْعِينَ عَامًا.',
+    achievements:'الْحُكْمُ الِانْتِقَالِيّ.',
+    legacy:'مِنَ الْفَرَاعِنَةِ الَّذِينَ يُمَثِّلُونَ مَرَاحِلَ الِانْتِقَالِ بَيْنَ عُصُورٍ كُبْرَى.',
+    tags:['الدَّوْلَةُ الْقَدِيمَة','الِانْتِقَال','الْأُسْرَةُ السَّادِسَة','بيبي الثَّانِي'] },
+
+  { id:64, name:'وِنِيس', latin:'Unas', era:'old', badge:'badge-old', eraName:'الدَّوْلَةُ الْقَدِيمَة', reign:'٢٣٧٥–٢٣٤٥ ق.م', dynasty:'الْأُسْرَةُ الْخَامِسَة', capital:'مَنْف',
+    desc:'أَوَّلُ فِرْعَوْنٍ نَقَشَ نُصُوصَ الْأَهْرَامِ دَاخِلَ هَرَمِهِ. أَقْدَمُ نُصُوصٍ دِينِيَّةٍ فِي الْعَالَم.',
+    overview:'وِنِيس آخِرُ مُلُوكِ الْأُسْرَةِ الْخَامِسَة. أَمَرَ بِنَقْشِ نُصُوصِ الْأَهْرَامِ دَاخِلَ هَرَمِهِ فِي سَقَّارَةَ وَهِيَ أَقْدَمُ نُصُوصٍ دِينِيَّةٍ مَكْتُوبَةٍ مَعْرُوفَةٍ فِي الْعَالَم.',
+    achievements:'نُصُوصُ الْأَهْرَامِ أَقْدَمُ نُصُوصٍ دِينِيَّة. هَرَمُ سَقَّارَة.',
+    legacy:'نُصُوصُ الْأَهْرَامِ الَّتِي بَدَأَ بِهَا تُعَدُّ مِنْ أَثْمَنِ الْمَوَارِيثِ الدِّينِيَّةِ الْإِنْسَانِيَّة.',
+    tags:['نُصُوصُ الْأَهْرَامِ','أَقْدَمُ نُصُوصٍ دِينِيَّة','سَقَّارَة','الْأُسْرَةُ الْخَامِسَة'] },
+
+  { id:65, name:'خِنْتِكَاوِس الأولى', latin:'Khentkaus I', era:'old', badge:'badge-old', eraName:'الدَّوْلَةُ الْقَدِيمَة', reign:'٢٥٠٠ ق.م', dynasty:'الْأُسْرَةُ الرَّابِعَة', capital:'مَنْف',
+    desc:'مَلِكَةٌ مِنَ الدَّوْلَةِ الْقَدِيمَة. مَقْبَرَتُهَا فِي الْجِيزَةِ تُعَدُّ «هَرَمًا رَابِعًا» أَمَامَ الْأَهْرَامَات.',
+    overview:'خِنْتِكَاوِس الأولى مَلِكَةٌ مِنَ الدَّوْلَةِ الْقَدِيمَة. مَقْبَرَتُهَا الضَّخْمَةُ فِي الْجِيزَةِ تُسَمَّى أَحْيَانًا «الْهَرَمَ الرَّابِع».',
+    achievements:'مَقْبَرَةٌ ضَخْمَةٌ بِالْجِيزَة. أَلْقَابٌ مَلَكِيَّةٌ كَامِلَة.',
+    legacy:'مَقْبَرَتُهَا تُثِيرُ جَدَلًا أَكَادِيمِيًّا حَوْلَ دَوْرِ الْمَرْأَةِ فِي الدَّوْلَةِ الْقَدِيمَة.',
+    tags:['الْهَرَمُ الرَّابِع','الْجِيزَة','الدَّوْلَةُ الْقَدِيمَة','مَلِكَاتٌ قَدِيمَة'] },
+
+  { id:66, name:'رَمْسِيسُ الخَامِس', latin:'Ramesses V', era:'new', badge:'badge-new', eraName:'الدَّوْلَةُ الْحَدِيثَة', reign:'١١٤٩–١١٤٥ ق.م', dynasty:'الْأُسْرَةُ الْعِشْرُون', capital:'بِيـ-رَمْسِيس',
+    desc:'مُومِيَاؤُهُ أَقْدَمُ دَلِيلٍ عَلَى الْجُدَرِي فِي الْبَشَرِيَّة. مَاتَ شَابًّا بِالْمَرَض.',
+    overview:'رَمْسِيسُ الخَامِس مَاتَ شَابًّا وَمُومِيَاؤُهُ تَحْوِي عَلَامَاتٍ تُشِيرُ إِلَى الْجُدَرِي مِمَّا يَجْعَلُهُ أَقْدَمَ دَلِيلٍ بَشَرِيٍّ عَلَى هَذَا الْمَرَض.',
+    achievements:'وَثَائِقُ إِدَارِيَّةٌ مُهِمَّة. مَقْبَرَةٌ مُشْتَرَكَةٌ مَعَ رَمْسِيسَ السَّادِس.',
+    legacy:'مُومِيَاؤُهُ أَثَّرَتْ فِي عِلْمِ تَارِيخِ الطِّبِّ وَتَتَبُّعِ أَمْرَاضِ الْبَشَرِيَّة.',
+    tags:['أَقْدَمُ دَلِيلٍ عَلَى الْجُدَرِي','الطِّبُّ التَّارِيخِيّ','الْأُسْرَةُ الْعِشْرُون','الرَّعَامِسَة'] },
+];
+
+const tlData = [
+  { year:'٣١٠٠ ق.م', name:'تَوْحِيدُ مِصْر',              text:'يُوَحِّدُ مِينَا مِصْرَ الْعُلْيَا وَالسُّفْلَى وَيُؤَسِّسُ أَوَّلَ أُسْرَةٍ مَلَكِيَّة.' },
+  { year:'٢٥٨٩ ق.م', name:'هَرَمُ خُوفُو',                text:'يُشَيِّدُ خُوفُو الْهَرَمَ الْأَكْبَرَ الْوَحِيدَ الْبَاقِي مِنْ عَجَائِبِ الدُّنْيَا السَّبْع.' },
+  { year:'١٤٧٩ ق.م', name:'حُكْمُ حَتْشِبْسُوت',          text:'تُعْلِنُ حَتْشِبْسُوتُ نَفْسَهَا فِرْعَوْنًا وَتَحْكُمُ مِصْرَ عِشْرِينَ عَامًا.' },
+  { year:'١٣٥٣ ق.م', name:'ثَوْرَةُ أَخْنَاتُون',          text:'يُعْلِنُ أَخْنَاتُونُ أَوَّلَ دِيَانَةٍ تَوْحِيدِيَّةٍ فِي التَّارِيخ.' },
+  { year:'١٢٧٤ ق.م', name:'مَعْرَكَةُ قَادِش',             text:'أَوَّلُ مُعَاهَدَةِ سَلَامٍ مَكْتُوبَةٍ فِي التَّارِيخِ بَيْنَ رَمْسِيسَ وَالْحِيثِيِّين.' },
+  { year:'٣٤٣ ق.م',  name:'الْغَزْوُ الْفَارِسِيّ',        text:'يَسْقُطُ آخِرُ فَرَاعِنَةِ الدَّمِ الْمِصْرِيِّ أَمَامَ الْفُرْس.' },
+  { year:'٣٠ ق.م',   name:'نِهَايَةُ الْحَضَارَةِ الْفِرْعَوْنِيَّة', text:'تَنْتَحِرُ كْلِيُوبَاتْرَا السَّابِعَةُ وَتُصْبِحُ مِصْرُ وِلَايَةً رُومَانِيَّة.' },
+];
+
+const badgeColors = {
+  'badge-old':  'border-color:var(--gold-dark);color:var(--gold-dark)',
+  'badge-middle':'border-color:var(--turq);color:var(--turq)',
+  'badge-new':  'border-color:var(--lapis);color:#6090d0',
+  'badge-late': 'border-color:var(--red);color:#d05050',
+  'badge-ptol': 'border-color:#8060c0;color:#c090ff',
+};
+
+let curKingId = null;
+
+// ── Render Cards
+function renderKings(filter='all') {
+  const grid = document.getElementById('kingsGrid');
+  grid.innerHTML = '';
+  kings.forEach((k,i) => {
+    const show = filter==='all' || k.era===filter;
+    const card = document.createElement('div');
+    card.className = 'king-card reveal' + (show ? '' : ' hidden');
+    card.setAttribute('data-era', k.era);
+    card.innerHTML = `
+      <div class="card-art">${makeSVG(k)}<div class="card-art-overlay"></div></div>
+      <div class="card-badge ${k.badge}">${k.eraName}</div>
+      <div class="card-hiero">𓂀</div>
+      <div class="card-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="card-body">
+        <div class="king-name">${k.name}</div>
+        <div class="king-latin">${k.latin}</div>
+        <div class="king-reign">⏳ ${k.reign}</div>
+        <div class="king-desc">${k.desc}</div>
+        <div class="king-tags">${k.tags.slice(0,3).map(t=>`<span class="ktag">${t}</span>`).join('')}</div>
+      </div>`;
+    card.addEventListener('click', () => openKing(k.id));
+    grid.appendChild(card);
+  });
+  setTimeout(()=>document.querySelectorAll('.king-card.reveal').forEach(e=>e.classList.add('visible')),100);
+}
+
+function filterKings(era, btn) {
+  document.querySelectorAll('.era-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.king-card').forEach(c=>{
+    if(era==='all'||c.getAttribute('data-era')===era) c.classList.remove('hidden');
+    else c.classList.add('hidden');
+  });
+}
+
+// ── Open King Page
+function openKing(id) {
+  const k = kings.find(x=>x.id===id);
+  if(!k) return;
+  curKingId = id;
+
+  // hero art — نفس الـ SVG بس أكبر
+  document.getElementById('kp-art').innerHTML = makeSVG(k,'100%','100%');
+
+  const badge = document.getElementById('kp-badge');
+  badge.textContent = k.eraName;
+  badge.style.cssText = badgeColors[k.badge]||'';
+
+  document.getElementById('kp-name').textContent = k.name;
+  document.getElementById('kp-latin').textContent = k.latin;
+  document.getElementById('kp-overview').innerHTML = `<p>${k.overview}</p>`;
+  document.getElementById('kp-achieve').innerHTML = `<p>${k.achievements}</p>`;
+  document.getElementById('kp-legacy').innerHTML = `<p>${k.legacy}</p>`;
+  document.getElementById('kp-tags').innerHTML = k.tags.map(t=>`<span class="kp-tag">${t}</span>`).join('');
+  document.getElementById('kp-info').innerHTML = `
+    <div class="kp-row"><span class="kp-key">فَتْرَةُ الْحُكْم</span><span class="kp-val">${k.reign}</span></div>
+    <div class="kp-row"><span class="kp-key">الْأُسْرَة</span><span class="kp-val">${k.dynasty}</span></div>
+    <div class="kp-row"><span class="kp-key">الْعَاصِمَة</span><span class="kp-val">${k.capital}</span></div>
+    <div class="kp-row"><span class="kp-key">الْعَصْر</span><span class="kp-val">${k.eraName}</span></div>`;
+
+  // جاليري — قطعتين SVG بنفس فن الملك
+  const gallery = document.getElementById('kp-gallery');
+  // نوع 1: نفس الرسمة
+  // نوع 2: نسخة مختلفة (نبدّل الألوان قليلاً)
+  gallery.innerHTML = `
+    <div class="kp-gallery-item" onclick="openLB(0,${id})">${makeSVG(k,'100%','100%')}</div>
+    <div class="kp-gallery-item" onclick="openLB(1,${id})">${makeSVGAlt(k)}</div>`;
+
+  const idx = kings.findIndex(x=>x.id===id);
+  document.getElementById('btn-prev').disabled = idx<=0;
+  document.getElementById('btn-next').disabled = idx>=kings.length-1;
+
+  document.getElementById('page-home').style.display='none';
+  document.getElementById('page-king').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// نسخة بديلة للجاليري — تُظهر رمزاً أو مشهداً مختلفاً
+function makeSVGAlt(k) {
+  const palettes = {
+    old:{bg1:'#1a0f00',bg2:'#3d2000',acc:'#c9a84c',acc2:'#8b1a1a'},
+    middle:{bg1:'#001a15',bg2:'#003328',acc:'#3a8a7a',acc2:'#c9a84c'},
+    new:{bg1:'#000d1a',bg2:'#001a3d',acc:'#4a7ab5',acc2:'#c9a84c'},
+    late:{bg1:'#1a0000',bg2:'#330000',acc:'#d05050',acc2:'#c9a84c'},
+    ptolemaic:{bg1:'#0d001a',bg2:'#1a003d',acc:'#9060d0',acc2:'#c9a84c'},
+  };
+  const p = palettes[k.era]||palettes.old;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+    <defs><radialGradient id="rg_${k.id}" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="${p.acc}" stop-opacity=".2"/><stop offset="100%" stop-color="${p.bg1}" stop-opacity="0"/></radialGradient></defs>
+    <rect width="100%" height="100%" fill="${p.bg1}"/>
+    <rect width="100%" height="100%" fill="url(#rg_${k.id})"/>
+    <!-- كارتوش الاسم -->
+    <ellipse cx="50%" cy="42%" rx="32%" ry="20%" fill="none" stroke="${p.acc}" stroke-width=".8" opacity=".4"/>
+    <line x1="30%" y1="62%" x2="70%" y2="62%" stroke="${p.acc}" stroke-width=".8" opacity=".4"/>
+    <!-- الاسم بالعربي داخل الكارتوش -->
+    <text x="50%" y="47%" text-anchor="middle" font-size="9" fill="${p.acc}" opacity=".6" font-family="'Noto Naskh Arabic',serif">${k.name.split('(')[0].trim()}</text>
+    <!-- هيروغليف -->
+    <text x="50%" y="75%" text-anchor="middle" font-size="16" fill="${p.acc}" opacity=".3" font-family="serif">𓂀𓋀𓇳</text>
+    <!-- زخارف أركان -->
+    <text x="8%" y="15%" font-size="10" fill="${p.acc}" opacity=".15" font-family="serif">𓅓</text>
+    <text x="85%" y="15%" font-size="10" fill="${p.acc}" opacity=".15" font-family="serif">𓏏</text>
+    <text x="8%" y="92%" font-size="10" fill="${p.acc}" opacity=".15" font-family="serif">𓋀</text>
+    <text x="85%" y="92%" font-size="10" fill="${p.acc}" opacity=".15" font-family="serif">𓂀</text>
+  </svg>`;
+}
+
+function goHome() {
+  document.getElementById('page-king').style.display='none';
+  document.getElementById('page-home').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function navKing(dir) {
+  const idx = kings.findIndex(x=>x.id===curKingId);
+  const next = kings[idx+dir];
+  if(next) openKing(next.id);
+}
+
+// ── Lightbox
+function openLB(type, kingId) {
+  const k = kings.find(x=>x.id===kingId);
+  const content = type===0 ? makeSVG(k,'85vw','80vh') : makeSVGAlt(k);
+  document.getElementById('lb-content').innerHTML = content;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLB() { document.getElementById('lightbox').classList.remove('active'); }
+
+// ── Timeline
+function renderTL() {
+  const c = document.getElementById('tlItems');
+  tlData.forEach(item => {
+    const d = document.createElement('div');
+    d.className = 'tl-item reveal';
+    d.innerHTML = `
+      <div class="tl-content"><div class="tl-year">${item.year}</div><div class="tl-name">${item.name}</div><div class="tl-text">${item.text}</div></div>
+      <div class="tl-dot-wrap"><div class="tl-dot-out"><div class="tl-dot-in"></div></div></div>
+      <div class="tl-empty"></div>`;
+    c.appendChild(d);
+  });
+}
+
+// ── Reveal
+function setupReveal() {
+  const obs = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+// ── Counters
+function animateCounters() {
+  document.querySelectorAll('.fact-num').forEach(el=>{
+    const target=parseInt(el.dataset.target), isPlus=target===170;
+    let c=0; const step=target/60;
+    const t=setInterval(()=>{
+      c=Math.min(c+step,target);
+      el.textContent=Math.floor(c)+(isPlus?'+':'');
+      if(c>=target){el.textContent=target+(isPlus?'+':'');clearInterval(t);}
+    },20);
+  });
+}
+new IntersectionObserver(entries=>{if(entries[0].isIntersecting){animateCounters();}},{threshold:.3}).observe(document.getElementById('facts'));
+
+renderKings(); renderTL(); setTimeout(setupReveal,100);
+</script>
+</body>
+</html>
